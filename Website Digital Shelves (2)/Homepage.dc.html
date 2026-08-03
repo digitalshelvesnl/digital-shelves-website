@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #12B04E; color: #fff; }
+</style>
+</helmet>
+
+<div style="font-family: 'Schibsted Grotesk', system-ui, sans-serif; background: #F7F9FC; color: #0B0D10; -webkit-font-smoothing: antialiased; overflow-x: clip;">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #E6EAF0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#" style="display: flex; align-items: center;">
+        <img src="assets/logo-cropped.png" alt="Digital Shelves" style="height: 40px; width: auto; display: block">
+      </a>
+      <nav style="display: flex; align-items: center; gap: 34px;">
+        <sc-for list="{{ t.navLinks }}" as="n" hint-placeholder-count="4">
+          <a href="{{ n.href }}" style="text-decoration: none; color: #48526A; font-size: 15px; font-weight: 500;">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 2px; background: #EBEEF3; border-radius: 9px; padding: 3px;">
+          <sc-for list="{{ langBtns }}" as="l" hint-placeholder-count="2">
+            <button onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.label }}</button>
+          </sc-for>
+        </div>
+        <a href="#contact" style="text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 15px; font-weight: 600; padding: 11px 20px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; min-width: 172px; box-sizing: border-box; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 22px rgba(0,181,94,0.4);">{{ t.navCta }}</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div style="position: relative; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(to right, rgba(11,13,16,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(11,13,16,0.05) 1px, transparent 1px); background-size: 54px 54px; -webkit-mask-image: radial-gradient(120% 135% at 50% 0%, #000 48%, transparent 92%); mask-image: radial-gradient(120% 135% at 50% 0%, #000 48%, transparent 92%);"></div>
+  <section style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 96px 32px 72px;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 100px; background: #E9F7EF; border: 1px solid #C8ECD6; margin-bottom: 28px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ accentColor }};"></span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: #35405C;">{{ t.heroEyebrow }}</span>
+    </div>
+    <h1 style="font-size: 68px; line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; margin: 0 0 24px; max-width: 900px; text-wrap: balance;">{{ t.heroH1pre }}<span style="background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">{{ t.heroH1hi }}</span></h1>
+    <p style="font-size: 21px; line-height: 1.5; color: #48526A; max-width: 620px; margin: 0 0 36px; font-weight: 400;">{{ t.heroSub }}</p>
+    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px;">
+      <a href="#contact" style="text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,181,94,0.28); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ t.heroCta1 }}</a>
+      <a href="#aanpak" style="text-decoration: none; background: #fff; color: #0B0D10; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 10px; border: 1px solid #DCE1EA;">{{ t.heroCta2 }}</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <sc-for list="{{ t.heroProof }}" as="p" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="color: {{ accentColor }}; font-size: 15px;">✓</span>
+          <span style="font-size: 15px; color: #35405C; font-weight: 500;">{{ p }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+  </section>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <section style="border-top: 1px solid #E6EAF0; border-bottom: 1px solid #E6EAF0; background: #fff;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #8A93A6; text-transform: uppercase;">{{ t.trust }}</span>
+      <div style="display: flex; align-items: center; gap: 48px; flex-wrap: wrap; opacity: 0.5;">
+        <sc-for list="{{ clientLogos }}" as="c" hint-placeholder-count="5">
+          <span style="font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: #0B0D10;">{{ c }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 72px 32px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+      <sc-for list="{{ t.metrics }}" as="m" hint-placeholder-count="3">
+        <div style="padding: 8px 0;">
+          <div style="font-size: 52px; font-weight: 700; letter-spacing: -0.03em; color: {{ accentColor }};">{{ m.value }}</div>
+          <div style="font-size: 16px; color: #48526A; margin-top: 6px; max-width: 300px;">{{ m.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- APPROACH / FRAMEWORK -->
+  <section id="aanpak" style="background: #0B0D10; color: #fff;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+      <div style="max-width: 640px; margin-bottom: 56px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: {{ accentColor }}; text-transform: uppercase;">{{ t.fwEyebrow }}</span>
+        <h2 style="font-size: 44px; line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 16px 0 18px;">{{ t.fwH2pre }}<span style="background: linear-gradient(90deg, #00b55e 0%, #2fe08a 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">{{ t.fwH2hi }}</span></h2>
+        <p style="font-size: 18px; line-height: 1.55; color: #A7B0C4; margin: 0;">{{ t.fwSub }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #23272C; border: 1px solid #23272C; border-radius: 16px; overflow: hidden;">
+        <sc-for list="{{ t.framework }}" as="f" hint-placeholder-count="4">
+          <div style="background: #101317; padding: 32px 26px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{ accentColor }}; margin-bottom: 28px;">{{ f.num }}</div>
+            <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 10px; letter-spacing: -0.01em;">{{ f.title }}</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #97A1B7; margin: 0;">{{ f.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="prijzen" style="background: #fff; border-top: 1px solid #E6EAF0; border-bottom: 1px solid #E6EAF0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+      <div style="max-width: 640px; margin: 0 auto 56px; text-align: center;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: {{ accentColor }}; text-transform: uppercase;">{{ t.prEyebrow }}</span>
+        <h2 style="font-size: 44px; line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 16px 0 16px;">{{ t.prH2 }}</h2>
+        <p style="font-size: 18px; line-height: 1.55; color: #48526A; margin: 0;">{{ t.prPara }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;">
+        <sc-for list="{{ t.pricing }}" as="p" hint-placeholder-count="3">
+          <div style="{{ p.cardStyle }}">
+            <div style="height: 34px; display: flex; align-items: center; margin-bottom: 16px;">
+              <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: {{ accentColor }}; padding: 6px 12px; border-radius: 100px;">{{ p.badge }}</span>
+              </sc-if>
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px;">{{ p.name }}</h3>
+            <p style="font-size: 14px; line-height: 1.5; color: #48526A; margin: 0 0 22px; min-height: 42px;">{{ p.desc }}</p>
+            <div style="display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 16px; font-weight: 700; color: #48526A;">{{ p.from }}</span>
+              <span style="font-size: 42px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">{{ p.price }}</span>
+              <span style="font-size: 15px; color: #8A93A6;">{{ p.unit }}</span>
+            </div>
+            <p style="font-size: 13px; font-style: italic; color: #8A93A6; margin: 14px 0 0; padding: 0 0 22px; border-bottom: 1px solid #EEF1F6;">{{ p.subtext }}</p>
+            <div style="display: flex; flex-direction: column; gap: 14px; margin: 22px 0 28px;">
+              <sc-for list="{{ p.features }}" as="feat" hint-placeholder-count="5">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #E6F7EF; display: flex; align-items: center; justify-content: center; color: {{ accentColor }}; font-size: 12px;">✓</span>
+                  <span style="font-size: 15px; color: #1F2937; line-height: 1.35;">{{ feat }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <a href="#contact" style="display: block; text-align: center; text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 15px; font-weight: 600; padding: 15px; border-radius: 100px; margin-top: auto; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ t.prCta }}</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section id="roi" style="background: #0B0D10; color: #fff;">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 96px 32px;">
+      <h2 style="font-size: 46px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin: 0 0 56px; text-align: center;">{{ t.roiHeadPre }}<span style="background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">{{ t.roiHeadHi }}</span></h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch;">
+
+        <!-- inputs -->
+        <div style="background: #161A20; border: 1px solid #23272C; border-radius: 22px; padding: 40px; display: flex; flex-direction: column; gap: 30px;">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px;">
+              <label style="font-size: 15px; color: #C3C9D4; line-height: 1.3;">{{ t.roiOrderLabel }}</label>
+              <input type="number" min="5" max="1000" value="{{ orderValue }}" onInput="{{ onOrderValue }}" style="width: 92px; background: #0F1216; border: 1px solid #2A2F37; border-radius: 9px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 500; padding: 9px 12px; text-align: right;">
+            </div>
+            <input type="range" min="5" max="500" step="5" value="{{ orderValue }}" onInput="{{ onOrderValue }}" style="width: 100%; accent-color: {{ accentColor }}; height: 4px;">
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px;">
+              <label style="font-size: 15px; color: #C3C9D4; line-height: 1.3;">{{ t.roiOrdersLabel }}</label>
+              <input type="number" min="10" max="100000" value="{{ monthlyOrders }}" onInput="{{ onMonthlyOrders }}" style="width: 92px; background: #0F1216; border: 1px solid #2A2F37; border-radius: 9px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 500; padding: 9px 12px; text-align: right;">
+            </div>
+            <input type="range" min="50" max="20000" step="50" value="{{ monthlyOrders }}" onInput="{{ onMonthlyOrders }}" style="width: 100%; accent-color: {{ accentColor }}; height: 4px;">
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #23272C; padding-top: 24px; margin-top: auto;">
+            <span style="font-size: 15px; color: #C3C9D4; line-height: 1.35;">{{ t.roiRevenueLabel }}</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 500;">{{ monthlyRevenueLabel }}</span>
+          </div>
+        </div>
+
+        <!-- result -->
+        <div style="background: #161A20; border: 1px solid #23272C; border-radius: 22px; padding: 40px; display: flex; flex-direction: column; text-align: center;">
+          <div style="display: flex; gap: 6px; background: #0F1216; border-radius: 12px; padding: 5px;">
+            <sc-for list="{{ upliftBtns }}" as="u" hint-placeholder-count="3">
+              <button onClick="{{ u.onClick }}" style="{{ u.style }}">{{ u.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin: auto 0; padding: 32px 0;">
+            <p style="font-size: 17px; color: #A7B0C4; margin: 0 0 10px;">{{ t.roiResultPre }}</p>
+            <div style="font-size: 52px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #fff;">{{ annualExtraLabel }}</div>
+            <p style="font-size: 17px; color: #A7B0C4; margin: 12px 0 0;">{{ t.roiResultPost }}</p>
+          </div>
+          <a href="#contact" style="display: block; text-align: center; text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 16px; font-weight: 700; padding: 16px; border-radius: 12px; box-shadow: 0 0 30px rgba(0,181,94,0.35); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 0 40px rgba(0,181,94,0.5);">{{ t.roiCta }}</a>
+          <p style="font-size: 12px; color: #5B6472; margin: 16px 0 0;">{{ t.roiNote }}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+    <div style="max-width: 860px; margin: 0 auto; text-align: center;">
+      <p style="font-size: 32px; line-height: 1.32; letter-spacing: -0.02em; font-weight: 600; margin: 0 0 32px; text-wrap: balance;">{{ t.quotePre }}<span style="color: {{ accentColor }};">{{ t.quoteHi }}</span>{{ t.quotePost }}</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
+        <div style="width: 46px; height: 46px; border-radius: 50%; background-image: repeating-linear-gradient(135deg, #E4E9F2 0px, #E4E9F2 6px, #F0F3F9 6px, #F0F3F9 12px);"></div>
+        <div style="text-align: left;">
+          <div style="font-size: 15px; font-weight: 600;">{{ t.quoteName }}</div>
+          <div style="font-size: 14px; color: #8A93A6;">{{ t.quoteRole }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background: #fff; border-top: 1px solid #E6EAF0;">
+    <div style="max-width: 820px; margin: 0 auto; padding: 96px 32px;">
+      <h2 style="font-size: 40px; letter-spacing: -0.03em; font-weight: 700; margin: 0 0 48px; text-align: center;">{{ t.faqH2pre }}<span style="background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">{{ t.faqH2hi }}</span></h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <sc-for list="{{ faqItems }}" as="q" hint-placeholder-count="5">
+          <div style="background: #F7F9FC; border: 1px solid #E6EAF0; border-radius: 16px; overflow: hidden;">
+            <button onClick="{{ q.onToggle }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: 'Schibsted Grotesk', sans-serif;">
+              <span style="font-size: 18px; font-weight: 600; color: #0B0D10; letter-spacing: -0.01em;">{{ q.q }}</span>
+              <span style="{{ q.iconStyle }}"></span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ true }}">
+              <p style="font-size: 16px; line-height: 1.65; color: #48526A; margin: 0; padding: 0 28px 26px;">{{ q.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="background: #0B0D10;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 110px 32px; text-align: center;">
+      <h2 style="font-size: 52px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; color: #fff; margin: 0 0 20px; text-wrap: balance;">{{ t.ctaH2 }}</h2>
+      <p style="font-size: 19px; color: #A7B0C4; margin: 0 auto 40px; max-width: 560px; line-height: 1.5;">{{ t.ctaPara }}</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="#" style="text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 17px; font-weight: 600; padding: 17px 32px; border-radius: 11px; box-shadow: 0 6px 24px rgba(0,181,94,0.4); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 14px 34px rgba(0,181,94,0.5);">{{ t.ctaBtn }}</a>
+        <a href="mailto:info@digitalshelves.nl" style="text-decoration: none; background: transparent; color: #fff; font-size: 17px; font-weight: 600; padding: 17px 32px; border-radius: 11px; border: 1px solid #fff;">info@digitalshelves.nl</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #070809; color: #fff;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 32px 52px;">
+      <img src="assets/logo-white.png" alt="Digital Shelves" style="height: 38px; width: auto; display: block;">
+      <nav style="display: flex; flex-wrap: wrap; gap: 16px 40px; margin-top: 40px;">
+        <sc-for list="{{ t.footerNav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="text-decoration: none; color: #9AA3B2; font-size: 16px; font-weight: 500;" style-hover="color: #fff;">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="height: 1px; background: #1C2024; margin: 44px 0;"></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px 40px;">
+        <sc-for list="{{ t.footerLegal }}" as="l" hint-placeholder-count="3">
+          <a href="{{ l.href }}" style="text-decoration: none; color: #C3C9D4; font-size: 15px; font-weight: 600;" style-hover="color: #fff;">{{ l.label }}</a>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px 44px; margin-top: 26px;">
+        <sc-for list="{{ t.footerBiz }}" as="b" hint-placeholder-count="3">
+          <span style="font-size: 15px; color: #6B7280;">{{ b }}</span>
+        </sc-for>
+      </div>
+      <div style="margin-top: 28px; font-size: 15px; color: #6B7280;">{{ t.footerCopy }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#16A34A&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#12B04E&quot;,&quot;#0A7A3C&quot;,&quot;#16A34A&quot;,&quot;#0E9F6E&quot;]}}">
+class Component extends DCLogic {
+  state = {
+    skuIndex: 1,
+    adSpend: 4000,
+    openFaq: 0,
+    openFaqs: { 0: true, 1: true, 2: true, 3: true, 4: true },
+    monthlyRevenue: 120000,
+    orderValue: 60,
+    monthlyOrders: 2000,
+    cvrIdx: 1,
+    upliftIdx: 1,
+    lang: (typeof localStorage !== 'undefined' && localStorage.getItem('ds_lang')) || 'nl',
+  };
+
+  setLang(lang) {
+    try { localStorage.setItem('ds_lang', lang); } catch (e) {}
+    this.setState({ lang });
+  }
+
+  fmt(n, lang) {
+    return '€' + Math.round(n).toLocaleString(lang === 'en' ? 'en-US' : 'nl-NL');
+  }
+
+  renderVals() {
+    const accentColor = this.props.accentColor ?? '#12B04E';
+    const lang = this.state.lang === 'en' ? 'en' : 'nl';
+
+    const copy = {
+      nl: {
+        navLinks: [
+          { label: 'Aanpak', href: '#aanpak' },
+          { label: 'Diensten', href: '#prijzen' },
+          { label: 'ROI', href: '#roi' },
+          { label: 'FAQ', href: '#faq' },
+        ],
+        navCta: 'Plan een gesprek',
+        heroEyebrow: 'Marketplace Experts',
+        heroH1pre: 'Schaal op via marketplaces met een bewezen ',
+        heroH1hi: 'CRO-framework.',
+        heroSub: 'Wij optimaliseren je listings en ads zodat je conversie structureel stijgt. Niet op gevoel, maar met data.',
+        heroSub2: 'Maandelijks opzegbaar. Geen opstartkosten.',
+        heroCta1: 'Plan een gratis gesprek →',
+        heroCta2: 'Bekijk onze aanpak',
+        heroProof: ['Maandelijks opzegbaar', 'Geen opstartkosten'],
+        dashLabel: 'screenshot: dashboard / rapportage',
+        trust: 'Vertrouwd door 50+ merken',
+        metrics: [
+          { value: '5+ jaar', label: 'Ervaring met groei op diverse marketplaces' },
+          { value: '€2M+', label: 'Beheerde ad spend op Amazon & Bol.com' },
+          { value: '+38%', label: 'Gemiddelde stijging in conversieratio na optimalisatie' },
+        ],
+        fwEyebrow: 'Het CRO-framework',
+        fwH2pre: 'Conversie is geen toeval. Het is een ',
+        fwH2hi: 'systeem.',
+        fwSub: 'Elke stap is meetbaar en herhaalbaar. We optimaliseren continu op basis van data — van listing tot bod.',
+        framework: [
+          { num: '01', title: 'Audit & data', body: 'We analyseren je listings, concurrentie en keywords om de grootste hefbomen te vinden.' },
+          { num: '02', title: 'CRO-optimalisatie', body: 'Content, beeld en keywords geoptimaliseerd om bezoekers naar kopers te converteren.' },
+          { num: '03', title: 'Ads-sturing', body: 'Campagnestructuur, biedingen en ACOS-sturing die winstgevend schaalt.' },
+          { num: '04', title: 'Continu schalen', body: 'Wekelijkse optimalisatie en heldere rapportage. We blijven bijsturen op data.' },
+        ],
+        svEyebrow: 'Diensten',
+        svH2: 'Kies wat je nodig hebt. Niets meer.',
+        svBadge: 'Meest gekozen',
+        roiHeadPre: 'Bereken jouw ',
+        roiHeadHi: 'ROI.',
+        roiRevenueLabel: 'Maandelijkse omzet Schatting',
+        roiOrderLabel: 'Gemiddelde bestelwaarde (in €)',
+        roiOrdersLabel: 'Maandelijkse aankopen',
+        roiRevenueYearLabel: 'Huidige jaaromzet',
+        roiCvrLabel: 'Huidige conversieratio',
+        roiUpliftLabel: 'Verwachte verbetering',
+        roiNewAnnual: 'Nieuwe jaaromzet',
+        roiExtra: 'Extra omzet per jaar',
+        roiMultiple: 'ROI',
+        roiResultPre: 'Samenwerken levert je',
+        roiResultPost: 'per jaar aan extra omzet op.',
+        roiCta: 'Ik wil samenwerken!',
+        roiNote: 'Indicatieve berekening, geen garantie.',
+        services: [
+          { name: 'Bol.com Ads', desc: 'Winstgevende campagnes op Bol.com, volledig beheerd.', price: 'Op maat', unit: '', note: "o.b.v. aantal EAN's", featured: false, features: ['Campagnestructuur & setup', 'Bod- & budgetbeheer', 'ACOS-sturing', 'Maandelijkse rapportage'] },
+          { name: 'Amazon Ads', desc: 'Sponsored Products, Brands & Display die schalen.', price: 'Op maat', unit: '', note: "o.b.v. aantal EAN's", featured: false, features: ['Sponsored campagnes', 'Bod- & budgetbeheer', 'ACOS-sturing', 'Maandelijkse rapportage'] },
+          { name: 'Marketplace Management', desc: 'CRO + Ads gecombineerd. De volledige groeimotor.', price: 'Op maat', unit: '', note: "o.b.v. aantal EAN's", featured: true, features: ['Alles uit Ads', 'Volledige CRO op listings', 'Content & beeldoptimalisatie', 'Vaste contactpersoon'] },
+        ],
+        prEyebrow: 'Onze pakketten',
+        prH2: 'Kies wat je nodig hebt.',
+        prPara: "Geen opstartkosten, maandelijks opzegbaar. Je exacte tarief bepalen we op basis van aantal SKU's. Altijd op maat.",
+        prCta: 'Vrijblijvend kennismaken →',
+        pricing: [
+          { name: 'Bol.com Ads', badge: 'Meest gekozen', featured: true, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Volledig advertentiebeheer op Bol.com.', subtext: "Prijs op basis van aantal SKU's. Altijd op maat.", features: ['Sponsored Products campagnebeheer', 'Branded Shelves strategie & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
+          { name: 'Amazon Ads', badge: '', featured: false, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Sponsored campagnes die winstgevend schalen.', subtext: "Prijs op basis van aantal SKU's. Altijd op maat.", features: ['Sponsored Products, Brands & Display', 'Campagnestructuur & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
+          { name: 'Store Management', badge: '', featured: false, from: 'v.a.', price: '€1.500', unit: '/ maand', desc: 'CRO + Ads. Je volledige marketplace ontzorgd.', subtext: "Prijs op basis van aantal SKU's. Altijd op maat.", features: ['Volledig marketplace-beheer', 'CRO op al je listings', 'Content & beeldoptimalisatie', 'Ads op Bol.com & Amazon', 'Vaste contactpersoon', 'Geen langlopende contracten'] },
+        ],
+        quotePre: '“Binnen een kwartaal ging onze Bol.com-omzet met ',
+        quoteHi: '62%',
+        quotePost: ' omhoog. Voor het eerst voelt marketplace-groei als een systeem in plaats van gokwerk.”',
+        quoteName: 'Mark Luitens',
+        quoteRole: 'E-commerce manager, Quo Sale',
+        faqH2pre: 'Meest gestelde ',
+        faqH2hi: 'vragen.',
+        faqs: [
+          { q: 'Welke resultaten mag ik verwachten?', a: 'Binnen de eerste drie maanden zien we bij onze klanten gemiddeld 20-30% meer conversie op hun listings. Bij sommige merken groeit de omzet via Bol.com of Amazon zelfs 2-3x. De uiteindelijke resultaten hangen af van je startpunt en de samenwerking tussen ons en jou als klant. Daarom stappen we alleen in een traject als we overtuigd zijn dat de investering zich terugverdient.' },
+          { q: 'Hoe ziet jullie werkwijze eruit?', a: 'We starten altijd met een audit van je huidige listings en advertentieaccounts. Zo brengen we in kaart waar de grootste kansen liggen en wat haalbaar is. Op basis daarvan bouwen we een concreet 90-dagenplan met heldere prioriteiten. In de eerste fase optimaliseren we vaak de volledige contentstructuur. Daarna sturen we wekelijks bij op basis van data, met een vaste maandelijkse rapportage en contactmoment.' },
+          { q: 'Hoe snel kunnen we starten?', a: 'Zodra we het akkoord hebben op de audit en het voorstel, starten we direct. De onboarding duurt gemiddeld 7 dagen en binnen 14 dagen staan de eerste optimalisaties live. Klaar om te beginnen? Plan een gratis kennismaking.' },
+          { q: 'Wat zijn de kosten om met jullie samen te werken?', a: "Onze tarieven zijn altijd op maat en gebaseerd op het aantal SKU's en de gekozen scope (Ads, CRO of beide). Ads-beheer start vanaf €350-€400 per maand plus 5% van je advertentiebudget. Store Management start vanaf €1.500 per maand. Geen opstartkosten, maandelijks opzegbaar." },
+          { q: 'Waarom zou ik voor Digital Shelves kiezen als marketplace-partner?', a: 'Omdat we werken volgens een bewezen CRO-framework in plaats van losse ad-hoc optimalisaties. We combineren contentoptimalisatie met advertentiebeheer, zodat elke euro ad spend landt op een listing die al maximaal converteert. Je krijgt een vast aanspreekpunt, transparante rapportage en een partner die net zo gedreven is om jouw omzet te laten groeien als jijzelf.' },
+        ],
+        ctaH2: 'Klaar om structureel te groeien op Amazon & Bol.com?',
+        ctaPara: 'Plan een vrijblijvend gesprek. We laten je in 30 minuten zien waar je grootste groeikansen liggen.',
+        ctaBtn: 'Plan een gratis gesprek →',
+        footerNav: [
+          { label: 'Aanpak', href: '#aanpak' },
+          { label: 'Diensten', href: '#prijzen' },
+          { label: 'ROI', href: '#roi' },
+          { label: 'FAQ', href: '#faq' },
+        ],
+        footerLegal: [
+          { label: 'Algemene Voorwaarden', href: '#' },
+          { label: 'Cookiebeleid', href: '#' },
+          { label: 'Privacyverklaring', href: '#' },
+        ],
+        footerBiz: ['KvK: 92648088', 'Adres: Damsterdiep 10, 9711 SK, Groningen', 'info@digitalshelves.nl'],
+        footerCopy: '© 2026 Digital Shelves.',
+        perMonth: 'p/m',
+        skuUnit: "SKU\u2019s",
+      },
+      en: {
+        navLinks: [
+          { label: 'Approach', href: '#aanpak' },
+          { label: 'Services', href: '#prijzen' },
+          { label: 'ROI', href: '#roi' },
+          { label: 'FAQ', href: '#faq' },
+        ],
+        navCta: 'Schedule a call',
+        heroEyebrow: 'Marketplace Experts',
+        heroH1pre: 'Scale up on marketplaces with a proven ',
+        heroH1hi: 'CRO framework.',
+        heroSub: 'We optimize your listings and ads so your conversion rises structurally — not by guessing, but with data.',
+        heroSub2: 'Cancel monthly. No setup costs.',
+        heroCta1: 'Book a free call →',
+        heroCta2: 'See our approach',
+        heroProof: ['Cancel monthly', 'No setup costs'],
+        dashLabel: 'screenshot: dashboard / reporting',
+        trust: 'Trusted by 50+ brands',
+        metrics: [
+          { value: '5+ Years', label: 'Experience in marketplace growth' },
+          { value: '€2M+', label: 'Managed ad spend across Amazon & Bol.com' },
+          { value: '+38%', label: 'Average uplift in conversion rate after optimization' },
+        ],
+        fwEyebrow: 'The CRO framework',
+        fwH2pre: "Conversion isn't luck. It's a ",
+        fwH2hi: 'system.',
+        fwSub: 'Every step is measurable and repeatable. We optimize continuously based on data — from listing to bid.',
+        framework: [
+          { num: '01', title: 'Audit & data', body: 'We analyze your listings, competition and keywords to find the biggest levers.' },
+          { num: '02', title: 'CRO optimization', body: 'Content, imagery and keywords optimized to turn visitors into buyers.' },
+          { num: '03', title: 'Ads steering', body: 'Campaign structure, bidding and ACOS steering that scales profitably.' },
+          { num: '04', title: 'Continuous scaling', body: 'Weekly optimization and clear reporting. We keep steering on data.' },
+        ],
+        svEyebrow: 'Services',
+        svH2: 'Choose what you need. Nothing more.',
+        svBadge: 'Most chosen',
+        roiHeadPre: 'Calculate your ',
+        roiHeadHi: 'ROI.',
+        roiRevenueLabel: 'Monthly revenue Estimate',
+        roiOrderLabel: 'Average order value (in €)',
+        roiOrdersLabel: 'Monthly orders',
+        roiRevenueYearLabel: 'Current yearly revenue',
+        roiCvrLabel: 'Current conversion rate',
+        roiUpliftLabel: 'Expected improvement',
+        roiNewAnnual: 'New yearly revenue',
+        roiExtra: 'Extra revenue per year',
+        roiMultiple: 'ROI',
+        roiResultPre: 'Working together earns you',
+        roiResultPost: 'per year in extra revenue.',
+        roiCta: "Let's work together!",
+        roiNote: 'Indicative calculation, not a guarantee.',
+        services: [
+          { name: 'Bol.com Ads', desc: 'Profitable, fully managed Bol.com campaigns.', price: 'Custom', unit: '', note: 'based on number of EANs', featured: false, features: ['Campaign structure & setup', 'Bid & budget management', 'ACOS steering', 'Monthly reporting'] },
+          { name: 'Amazon Ads', desc: 'Sponsored Products, Brands & Display that scale.', price: 'Custom', unit: '', note: 'based on number of EANs', featured: false, features: ['Sponsored campaigns', 'Bid & budget management', 'ACOS steering', 'Monthly reporting'] },
+          { name: 'Marketplace Management', desc: 'CRO + Ads combined. The full growth engine.', price: 'Custom', unit: '', note: 'based on number of EANs', featured: true, features: ['Everything in Ads', 'Full listing CRO', 'Content & image optimization', 'Dedicated contact'] },
+        ],
+        prEyebrow: 'Our packages',
+        prH2: 'Choose what you need.',
+        prPara: 'No setup costs, cancel monthly. Your exact rate is based on the number of SKUs. Always custom.',
+        prCta: 'Schedule a free intro →',
+        pricing: [
+          { name: 'Bol.com Ads', badge: 'Most chosen', featured: true, from: 'from', price: '€400', unit: '/ month', desc: 'Full advertising management on Bol.com.', subtext: 'Priced by number of SKUs. Always custom.', features: ['Sponsored Products campaign management', 'Branded Shelves strategy & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
+          { name: 'Amazon Ads', badge: '', featured: false, from: 'from', price: '€400', unit: '/ month', desc: 'Sponsored campaigns that scale profitably.', subtext: 'Priced by number of SKUs. Always custom.', features: ['Sponsored Products, Brands & Display', 'Campaign structure & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
+          { name: 'Store Management', badge: '', featured: false, from: 'from', price: '€1,500', unit: '/ month', desc: 'CRO + Ads. Your full marketplace, handled.', subtext: 'Priced by number of SKUs. Always custom.', features: ['Full marketplace management', 'CRO on all your listings', 'Content & image optimization', 'Ads on Bol.com & Amazon', 'Dedicated contact', 'No long-term contracts'] },
+        ],
+        quotePre: '“Within a quarter our Bol.com revenue rose ',
+        quoteHi: '62%',
+        quotePost: '. For the first time marketplace growth feels like a system instead of guesswork.”',
+        quoteName: 'Mark Luitens',
+        quoteRole: 'E-commerce manager, Quo Sale',
+        faqH2pre: 'Frequently asked ',
+        faqH2hi: 'questions.',
+        faqs: [
+          { q: 'What results can I expect?', a: "Within the first three months our clients typically see a 20-30% uplift in listing conversion. For some brands, revenue on Bol.com or Amazon grows 2-3x. Final results depend on your starting point and how closely we work together. That's why we only start a project when we're confident the investment pays off." },
+          { q: 'What does your process look like?', a: "We always start with an audit of your current listings and ad accounts, mapping the biggest opportunities. From there we build a concrete 90-day plan with clear priorities. The first phase often means a full content overhaul. After that we steer weekly based on data, with a fixed monthly report and check-in." },
+          { q: 'How fast can we get started?', a: 'Once we agree on the audit and proposal, we start immediately. Onboarding takes about 7 days, and within 14 days the first optimizations go live. Ready to start? Schedule a free intro call.' },
+          { q: 'What does it cost to work with you?', a: 'Our rates are always custom, based on the number of SKUs and chosen scope (Ads, CRO or both). Ads management starts at €350-€400/month plus 5% of your ad spend. Store Management starts at €1,500/month. No setup costs, cancel monthly.' },
+          { q: 'Why choose Digital Shelves as your marketplace partner?', a: "Because we work from a proven CRO framework instead of ad-hoc tweaks. We combine content optimization with ads management, so every euro of ad spend lands on a listing that already converts at its best. You get a dedicated contact, transparent reporting, and a partner as driven to grow your revenue as you are." },
+        ],
+        ctaH2: 'Ready to grow structurally on Amazon & Bol.com?',
+        ctaPara: "Book a no-obligation call. In 30 minutes we'll show you where your biggest growth opportunities are.",
+        ctaBtn: 'Book a free call →',
+        footerNav: [
+          { label: 'Approach', href: '#aanpak' },
+          { label: 'Services', href: '#prijzen' },
+          { label: 'ROI', href: '#roi' },
+          { label: 'FAQ', href: '#faq' },
+        ],
+        footerLegal: [
+          { label: 'Terms & Conditions', href: '#' },
+          { label: 'Cookie Policy', href: '#' },
+          { label: 'Privacy Statement', href: '#' },
+        ],
+        footerBiz: ['CoC: 92648088', 'Address: Damsterdiep 10, 9711 SK, Groningen', 'info@digitalshelves.nl'],
+        footerCopy: '© 2026 Digital Shelves.',
+        perMonth: 'p/mo',
+        skuUnit: 'SKUs',
+      },
+    };
+
+    const t = copy[lang];
+
+    t.pricing = t.pricing.map((p) => ({
+      ...p,
+      cardStyle: `background:#fff; border-radius:20px; padding:32px 30px; display:flex; flex-direction:column; height:100%; ${p.featured ? `border:1.5px solid ${accentColor}; box-shadow:0 20px 50px -24px rgba(0,181,94,0.45);` : 'border:1px solid #E1E7F0;'}`,
+    }));
+
+    const uplifts = [0.10, 0.15, 0.25];
+    const orderValue = this.state.orderValue;
+    const monthlyOrders = this.state.monthlyOrders;
+    const upliftIdx = this.state.upliftIdx;
+    const monthlyRevenue = orderValue * monthlyOrders;
+    const annualExtra = monthlyRevenue * 12 * uplifts[upliftIdx];
+    const eur = (n) => '€ ' + Math.round(n || 0).toLocaleString(lang === 'en' ? 'en-US' : 'nl-NL') + (lang === 'en' ? '' : ',-');
+    const upliftColors = ['#005f45', '#00873f', '#00b55e'];
+    const upliftBtns = uplifts.map((u, idx) => ({
+      label: Math.round(u * 100) + '%',
+      onClick: () => this.setState({ upliftIdx: idx }),
+      style: `flex:1; cursor:pointer; border:none; padding:16px 8px; border-radius:9px; font-family:'Schibsted Grotesk',sans-serif; font-size:22px; font-weight:700; transition:all .15s; ${idx === upliftIdx ? `background:${upliftColors[idx]}; color:#fff;` : `background:${upliftColors[idx]}22; color:#5B6472;`}`,
+    }));
+
+    const openFaqs = this.state.openFaqs;
+    const faqItems = t.faqs.map((q, idx) => ({
+      q: q.q,
+      a: q.a,
+      open: !!openFaqs[idx],
+      iconStyle: `flex-shrink:0; width:10px; height:10px; border-right:2px solid ${accentColor}; border-bottom:2px solid ${accentColor}; margin-right:8px; transition:transform .2s ease; transform: ${openFaqs[idx] ? 'rotate(-135deg)' : 'rotate(45deg)'};`,
+      onToggle: () => this.setState({ openFaqs: { ...openFaqs, [idx]: !openFaqs[idx] } }),
+    }));
+
+    const langBtns = ['nl', 'en'].map((code) => {
+      const active = lang === code;
+      return {
+        label: code.toUpperCase(),
+        onClick: () => this.setLang(code),
+        style: `cursor:pointer; border:none; padding:6px 11px; border-radius:6px; font-family:'Schibsted Grotesk',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.02em; transition:all .15s; ${
+          active ? `background:#fff; color:#0B0D10; box-shadow:0 1px 2px rgba(11,13,16,0.12);` : 'background:transparent; color:#8A93A6;'
+        }`,
+      };
+    });
+
+    const tiers = [
+      { label: '0–25', mgmt: 350 },
+      { label: '25–50', mgmt: 600 },
+      { label: '50–100', mgmt: 850 },
+    ];
+    const i = this.state.skuIndex;
+    const adSpend = this.state.adSpend;
+    const mgmt = tiers[i].mgmt;
+    const adsTotal = 400 + adSpend * 0.05;
+    const total = mgmt + adsTotal;
+    const per = ' ' + t.perMonth;
+
+    const skuTiers = tiers.map((tier, idx) => ({
+      label: tier.label,
+      select: () => this.setState({ skuIndex: idx }),
+      style: `flex:1; cursor:pointer; padding:12px 8px; border-radius:10px; font-family:'Schibsted Grotesk',sans-serif; font-size:15px; font-weight:600; transition:all .15s; ${
+        idx === i
+          ? `background:${accentColor}; color:#fff; border:1px solid ${accentColor};`
+          : 'background:#fff; color:#35405C; border:1px solid #DCE1EA;'
+      }`,
+    }));
+
+    return {
+      accentColor,
+      t,
+      langBtns,
+      clientLogos: ['KIMO DIRECT', 'Climatz', 'Dyluxe', 'Quo Sale'],
+      faqItems,
+      orderValue,
+      monthlyOrders,
+      onOrderValue: (e) => this.setState({ orderValue: Math.max(0, Number(e.target.value) || 0) }),
+      onMonthlyOrders: (e) => this.setState({ monthlyOrders: Math.max(0, Number(e.target.value) || 0) }),
+      upliftBtns,
+      monthlyRevenueLabel: eur(monthlyRevenue),
+      annualExtraLabel: eur(annualExtra),
+      skuTiers,
+      adSpend,
+      adSpendLabel: this.fmt(adSpend, lang),
+      onAdSpend: (e) => this.setState({ adSpend: Number(e.target.value) }),
+      skuLabel: tiers[i].label + ' ' + t.skuUnit,
+      mgmtLabel: this.fmt(mgmt, lang) + per,
+      adsLabel: this.fmt(adsTotal, lang) + per,
+      totalLabel: this.fmt(total, lang) + per,
+    };
+  }
+}
+</script>
+</body>
+</html>
