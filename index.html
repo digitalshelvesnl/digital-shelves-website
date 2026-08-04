@@ -17,6 +17,7 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; }
   ::selection { background: #12B04E; color: #fff; }
+  @keyframes marquee-rtl { from { transform: translateX(0); } to { transform: translateX(-25%); } }
 </style>
 </helmet>
 
@@ -24,7 +25,7 @@
 
   <!-- NAV -->
   <header style="position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #E6EAF0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 88px; display: flex; align-items: center; justify-content: space-between;">
       <a href="#" style="display: flex; align-items: center;">
         <img src="assets/logo-cropped.png" alt="Digital Shelves" style="height: 40px; width: auto; display: block">
       </a>
@@ -45,52 +46,87 @@
   </header>
 
   <!-- HERO -->
-  <div style="position: relative; overflow: hidden;">
-    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(to right, rgba(11,13,16,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(11,13,16,0.05) 1px, transparent 1px); background-size: 54px 54px; -webkit-mask-image: radial-gradient(120% 135% at 50% 0%, #000 48%, transparent 92%); mask-image: radial-gradient(120% 135% at 50% 0%, #000 48%, transparent 92%);"></div>
-  <section style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 96px 32px 72px;">
+  <div style="position: relative; overflow: hidden; background: linear-gradient(135deg, #EAF7EF 0%, #F7F9FC 55%, #F1FBF6 100%);">
+    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: radial-gradient(60% 55% at 12% 10%, rgba(0,181,94,0.16), transparent 70%), radial-gradient(55% 60% at 92% 30%, rgba(0,95,69,0.14), transparent 70%);"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(to right, rgba(11,13,16,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(11,13,16,0.05) 1px, transparent 1px); background-size: 54px 54px; -webkit-mask-image: radial-gradient(85% 95% at 50% 0%, #000 30%, transparent 75%); mask-image: radial-gradient(85% 95% at 50% 0%, #000 30%, transparent 75%);"></div>
+  <section style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 96px 32px 72px; display: flex; flex-direction: column; align-items: center; text-align: center;">
     <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 100px; background: #E9F7EF; border: 1px solid #C8ECD6; margin-bottom: 28px;">
       <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ accentColor }};"></span>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: #35405C;">{{ t.heroEyebrow }}</span>
+      <span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: #35405C;">{{ t.heroEyebrow }}</span>
     </div>
     <h1 style="font-size: 68px; line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; margin: 0 0 24px; max-width: 900px; text-wrap: balance;">{{ t.heroH1pre }}<span style="background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">{{ t.heroH1hi }}</span></h1>
     <p style="font-size: 21px; line-height: 1.5; color: #48526A; max-width: 620px; margin: 0 0 36px; font-weight: 400;">{{ t.heroSub }}</p>
-    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px;">
       <a href="#contact" style="text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,181,94,0.28); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ t.heroCta1 }}</a>
       <a href="#aanpak" style="text-decoration: none; background: #fff; color: #0B0D10; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 10px; border: 1px solid #DCE1EA;">{{ t.heroCta2 }}</a>
-    </div>
-    <div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
-      <sc-for list="{{ t.heroProof }}" as="p" hint-placeholder-count="3">
-        <div style="display: flex; align-items: center; gap: 9px;">
-          <span style="color: {{ accentColor }}; font-size: 15px;">✓</span>
-          <span style="font-size: 15px; color: #35405C; font-weight: 500;">{{ p }}</span>
-        </div>
-      </sc-for>
     </div>
 
   </section>
   </div>
 
   <!-- TRUST STRIP -->
-  <section style="border-top: 1px solid #E6EAF0; border-bottom: 1px solid #E6EAF0; background: #fff;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #8A93A6; text-transform: uppercase;">{{ t.trust }}</span>
-      <div style="display: flex; align-items: center; gap: 48px; flex-wrap: wrap; opacity: 0.5;">
-        <sc-for list="{{ clientLogos }}" as="c" hint-placeholder-count="5">
-          <span style="font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: #0B0D10;">{{ c }}</span>
+  <section style="background: #0B0D10; padding: 24px 0 44px; overflow: hidden;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; text-align: center; margin-bottom: 28px;">
+      <span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #7A8290; text-transform: uppercase;">{{ t.trust }}</span>
+    </div>
+    <div style="position: relative; max-width: 1000px; margin: 0 auto; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);">
+      <div style="display: flex; align-items: center; gap: 64px; width: max-content; opacity: 0.7; animation: marquee-rtl 68s linear infinite; will-change: transform;">
+        <sc-for list="{{ clientLogosLoop }}" as="c" hint-placeholder-count="20">
+          <sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ c.img }}" alt="{{ c.name }}" style="height: 30px; width: auto; display: block; flex-shrink: 0; filter: invert(1) grayscale(1);">
+          </sc-if>
+          <sc-if value="{{ c.text }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: #fff; white-space: nowrap; flex-shrink: 0;">{{ c.name }}</span>
+          </sc-if>
         </sc-for>
       </div>
     </div>
   </section>
 
   <!-- METRICS -->
-  <section style="max-width: 1200px; margin: 0 auto; padding: 72px 32px;">
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+  <section style="background: #0B0D10; margin: 0 auto; padding: 72px 32px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
       <sc-for list="{{ t.metrics }}" as="m" hint-placeholder-count="3">
-        <div style="padding: 8px 0;">
+        <div style="padding: 8px 0; text-align: center;">
           <div style="font-size: 52px; font-weight: 700; letter-spacing: -0.03em; color: {{ accentColor }};">{{ m.value }}</div>
-          <div style="font-size: 16px; color: #48526A; margin-top: 6px; max-width: 300px;">{{ m.label }}</div>
+          <div style="font-size: 16px; color: #A7B0C4; margin-top: 6px; max-width: 300px; margin-left: auto; margin-right: auto;">{{ m.label }}</div>
         </div>
       </sc-for>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section style="background: #fff;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: {{ accentColor }}; text-transform: uppercase;">{{ t.compEyebrow }}</span>
+      <h2 style="font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; margin: 16px 0 18px; max-width: 700px;">{{ t.compH2 }}</h2>
+      <p style="font-size: 18px; line-height: 1.55; color: #48526A; margin: 0 0 52px; max-width: 640px;">{{ t.compPara }}</p>
+      <div style="border: 1px solid #E1E7F0; border-radius: 22px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+        <div style="background: #F7F9FC; padding: 44px 40px; border-right: 1px solid #E1E7F0;">
+          <span style="display: inline-block; font-size: 13px; font-weight: 600; color: #6B7280; background: #ECEFF3; padding: 7px 16px; border-radius: 100px; margin-bottom: 24px;">{{ t.compOldBadge }}</span>
+          <h3 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 26px; color: #0B0D10;">{{ t.compOldH3 }}</h3>
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <sc-for list="{{ t.compOldItems }}" as="item" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: #DDE1E8; color: #6B7280; font-size: 13px; display: flex; align-items: center; justify-content: center;">✕</span>
+                <span style="font-size: 16px; color: #48526A;">{{ item }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background: #fff; padding: 44px 40px;">
+          <span style="display: inline-block; font-size: 13px; font-weight: 600; color: #fff; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); padding: 7px 16px; border-radius: 100px; margin-bottom: 24px;">{{ t.compNewBadge }}</span>
+          <h3 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 26px; color: #0B0D10;">{{ t.compNewH3 }}</h3>
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <sc-for list="{{ t.compNewItems }}" as="item" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: {{ accentColor }}; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">✓</span>
+                <span style="font-size: 16px; color: #0B0D10; font-weight: 500;">{{ item }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -127,7 +163,7 @@
           <div style="{{ p.cardStyle }}">
             <div style="height: 34px; display: flex; align-items: center; margin-bottom: 16px;">
               <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: {{ accentColor }}; padding: 6px 12px; border-radius: 100px;">{{ p.badge }}</span>
+                <span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: {{ accentColor }}; padding: 6px 12px; border-radius: 100px;">{{ p.badge }}</span>
               </sc-if>
             </div>
             <h3 style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px;">{{ p.name }}</h3>
@@ -164,20 +200,20 @@
           <div>
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px;">
               <label style="font-size: 15px; color: #C3C9D4; line-height: 1.3;">{{ t.roiOrderLabel }}</label>
-              <input type="number" min="5" max="1000" value="{{ orderValue }}" onInput="{{ onOrderValue }}" style="width: 92px; background: #0F1216; border: 1px solid #2A2F37; border-radius: 9px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 500; padding: 9px 12px; text-align: right;">
+              <input type="number" min="5" max="1000" value="{{ orderValue }}" onInput="{{ onOrderValue }}" style="width: 92px; background: #0F1216; border: 1px solid #2A2F37; border-radius: 9px; color: #fff; font-family: 'Schibsted Grotesk', sans-serif; font-size: 16px; font-weight: 600; padding: 9px 12px; text-align: right;">
             </div>
             <input type="range" min="5" max="500" step="5" value="{{ orderValue }}" onInput="{{ onOrderValue }}" style="width: 100%; accent-color: {{ accentColor }}; height: 4px;">
           </div>
           <div>
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px;">
               <label style="font-size: 15px; color: #C3C9D4; line-height: 1.3;">{{ t.roiOrdersLabel }}</label>
-              <input type="number" min="10" max="100000" value="{{ monthlyOrders }}" onInput="{{ onMonthlyOrders }}" style="width: 92px; background: #0F1216; border: 1px solid #2A2F37; border-radius: 9px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 500; padding: 9px 12px; text-align: right;">
+              <input type="number" min="10" max="100000" value="{{ monthlyOrders }}" onInput="{{ onMonthlyOrders }}" style="width: 92px; background: #0F1216; border: 1px solid #2A2F37; border-radius: 9px; color: #fff; font-family: 'Schibsted Grotesk', sans-serif; font-size: 16px; font-weight: 600; padding: 9px 12px; text-align: right;">
             </div>
             <input type="range" min="50" max="20000" step="50" value="{{ monthlyOrders }}" onInput="{{ onMonthlyOrders }}" style="width: 100%; accent-color: {{ accentColor }}; height: 4px;">
           </div>
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #23272C; padding-top: 24px; margin-top: auto;">
             <span style="font-size: 15px; color: #C3C9D4; line-height: 1.35;">{{ t.roiRevenueLabel }}</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 500;">{{ monthlyRevenueLabel }}</span>
+            <span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.01em;">{{ monthlyRevenueLabel }}</span>
           </div>
         </div>
 
@@ -205,12 +241,9 @@
   <section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
     <div style="max-width: 860px; margin: 0 auto; text-align: center;">
       <p style="font-size: 32px; line-height: 1.32; letter-spacing: -0.02em; font-weight: 600; margin: 0 0 32px; text-wrap: balance;">{{ t.quotePre }}<span style="color: {{ accentColor }};">{{ t.quoteHi }}</span>{{ t.quotePost }}</p>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 14px;">
-        <div style="width: 46px; height: 46px; border-radius: 50%; background-image: repeating-linear-gradient(135deg, #E4E9F2 0px, #E4E9F2 6px, #F0F3F9 6px, #F0F3F9 12px);"></div>
-        <div style="text-align: left;">
-          <div style="font-size: 15px; font-weight: 600;">{{ t.quoteName }}</div>
-          <div style="font-size: 14px; color: #8A93A6;">{{ t.quoteRole }}</div>
-        </div>
+      <div style="text-align: center;">
+        <div style="font-size: 15px; font-weight: 600;">{{ t.quoteName }}</div>
+        <div style="font-size: 14px; color: #8A93A6;">{{ t.quoteRole }}</div>
       </div>
     </div>
   </section>
@@ -235,15 +268,47 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="contact" style="background: #0B0D10;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 110px 32px; text-align: center;">
-      <h2 style="font-size: 52px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; color: #fff; margin: 0 0 20px; text-wrap: balance;">{{ t.ctaH2 }}</h2>
-      <p style="font-size: 19px; color: #A7B0C4; margin: 0 auto 40px; max-width: 560px; line-height: 1.5;">{{ t.ctaPara }}</p>
-      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" style="text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 17px; font-weight: 600; padding: 17px 32px; border-radius: 11px; box-shadow: 0 6px 24px rgba(0,181,94,0.4); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 14px 34px rgba(0,181,94,0.5);">{{ t.ctaBtn }}</a>
-        <a href="mailto:info@digitalshelves.nl" style="text-decoration: none; background: transparent; color: #fff; font-size: 17px; font-weight: 600; padding: 17px 32px; border-radius: 11px; border: 1px solid #fff;">info@digitalshelves.nl</a>
+  <!-- CONTACT -->
+  <section id="contact" style="background: #F7F9FC; padding: 96px 32px;">
+    <div style="max-width: 1120px; margin: 0 auto; border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.15fr; background: #fff; box-shadow: 0 40px 90px -40px rgba(0,0,0,0.5);">
+
+      <div style="background: #0E3B30; padding: 64px 52px; display: flex; flex-direction: column;">
+        <span style="font-size: 15px; color: #7FD9AE; font-weight: 500;">{{ t.contactEyebrow }}</span>
+        <h2 style="font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; color: #fff; margin: 18px 0 48px;">{{ t.ctaH2 }}</h2>
+        <div style="display: flex; flex-direction: column; gap: 30px; margin-top: auto;">
+          <div style="display: flex; align-items: center; gap: 18px;">
+            <span style="flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: {{ accentColor }}; display: flex; align-items: center; justify-content: center; font-size: 19px;">✉</span>
+            <div>
+              <div style="font-size: 15px; color: #C7E8D9;">{{ t.contactEmailLabel }}</div>
+              <a href="mailto:info@digitalshelves.nl" style="text-decoration: none; color: #6FE3A3; font-size: 18px; font-weight: 500;">info@digitalshelves.nl</a>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 18px;">
+            <span style="flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: {{ accentColor }}; display: flex; align-items: center; justify-content: center; font-size: 19px;">📍</span>
+            <div>
+              <div style="font-size: 15px; color: #C7E8D9;">{{ t.contactLocationLabel }}</div>
+              <div style="color: #6FE3A3; font-size: 18px; font-weight: 500; line-height: 1.3;">Damsterdiep 10,<br>9711 SK Groningen</div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div style="padding: 64px 52px; display: flex; flex-direction: column;">
+        <h3 style="font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #0B0D10; margin: 0 0 32px;">{{ t.ctaPara }}</h3>
+        <form style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <input type="text" placeholder="{{ t.formCompany }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
+            <input type="text" placeholder="{{ t.formName }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <input type="email" placeholder="{{ t.formEmail }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
+            <input type="tel" placeholder="{{ t.formPhone }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
+          </div>
+          <textarea placeholder="{{ t.formMessage }}" rows="4" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; resize: vertical;"></textarea>
+          <button type="submit" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 17px; font-weight: 600; padding: 17px 32px; border-radius: 100px; border: none; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ t.formSubmit }} →</button>
+        </form>
+      </div>
+
     </div>
   </section>
 
@@ -279,7 +344,7 @@ class Component extends DCLogic {
     skuIndex: 1,
     adSpend: 4000,
     openFaq: 0,
-    openFaqs: { 0: true, 1: true, 2: true, 3: true, 4: true },
+    openFaqs: { 0: true },
     monthlyRevenue: 120000,
     orderValue: 60,
     monthlyOrders: 2000,
@@ -309,17 +374,26 @@ class Component extends DCLogic {
           { label: 'ROI', href: '#roi' },
           { label: 'FAQ', href: '#faq' },
         ],
-        navCta: 'Plan een gesprek',
-        heroEyebrow: 'Marketplace Experts',
-        heroH1pre: 'Schaal op via marketplaces met een bewezen ',
+        navCta: 'Contact opnemen',
+        heroEyebrow: 'Voor e-commerce brands',
+        heroH1pre: 'Schaal via marketplaces met een bewezen ',
         heroH1hi: 'CRO-framework.',
         heroSub: 'Wij optimaliseren je listings en ads zodat je conversie structureel stijgt. Niet op gevoel, maar met data.',
         heroSub2: 'Maandelijks opzegbaar. Geen opstartkosten.',
-        heroCta1: 'Plan een gratis gesprek →',
+        heroCta1: 'Contact opnemen →',
         heroCta2: 'Bekijk onze aanpak',
         heroProof: ['Maandelijks opzegbaar', 'Geen opstartkosten'],
         dashLabel: 'screenshot: dashboard / rapportage',
         trust: 'Vertrouwd door 50+ merken',
+        compEyebrow: 'Zelf doen vs. uitbesteden',
+        compH2: 'Je hebt niet meer ad budget nodig. Je hebt een groeisysteem nodig.',
+        compPara: 'De meeste merken draaien campagnes op gevoel en sturen niet op data. Wij bouwen een herhaalbaar systeem dat elke maand beter converteert.',
+        compOldBadge: 'De oude manier',
+        compOldH3: 'Losse optimalisaties',
+        compOldItems: ['Betalen voor uren, niet voor resultaat', 'Listings die nooit worden getest', 'Ads los van je contentstrategie', 'Geen zicht op wat echt werkt'],
+        compNewBadge: 'De Digital Shelves manier',
+        compNewH3: 'Een bewezen groeisysteem',
+        compNewItems: ['Je betaalt voor structurele groei', 'Continu geteste en verbeterde listings', 'Ads en CRO op elkaar afgestemd', 'Maandelijkse rapportage met heldere inzichten'],
         metrics: [
           { value: '5+ jaar', label: 'Ervaring met groei op diverse marketplaces' },
           { value: '€2M+', label: 'Beheerde ad spend op Amazon & Bol.com' },
@@ -328,7 +402,7 @@ class Component extends DCLogic {
         fwEyebrow: 'Het CRO-framework',
         fwH2pre: 'Conversie is geen toeval. Het is een ',
         fwH2hi: 'systeem.',
-        fwSub: 'Elke stap is meetbaar en herhaalbaar. We optimaliseren continu op basis van data — van listing tot bod.',
+        fwSub: 'Elke stap is meetbaar en herhaalbaar. We optimaliseren continu op basis van data, van listing tot bod.',
         framework: [
           { num: '01', title: 'Audit & data', body: 'We analyseren je listings, concurrentie en keywords om de grootste hefbomen te vinden.' },
           { num: '02', title: 'CRO-optimalisatie', body: 'Content, beeld en keywords geoptimaliseerd om bezoekers naar kopers te converteren.' },
@@ -360,18 +434,18 @@ class Component extends DCLogic {
         ],
         prEyebrow: 'Onze pakketten',
         prH2: 'Kies wat je nodig hebt.',
-        prPara: "Geen opstartkosten, maandelijks opzegbaar. Je exacte tarief bepalen we op basis van aantal SKU's. Altijd op maat.",
+        prPara: 'Geen opstartkosten, maandelijks opzegbaar. Je exacte tarief bepalen we op basis van account omvang, altijd op maat.',
         prCta: 'Vrijblijvend kennismaken →',
         pricing: [
-          { name: 'Bol.com Ads', badge: 'Meest gekozen', featured: true, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Volledig advertentiebeheer op Bol.com.', subtext: "Prijs op basis van aantal SKU's. Altijd op maat.", features: ['Sponsored Products campagnebeheer', 'Branded Shelves strategie & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
-          { name: 'Amazon Ads', badge: '', featured: false, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Sponsored campagnes die winstgevend schalen.', subtext: "Prijs op basis van aantal SKU's. Altijd op maat.", features: ['Sponsored Products, Brands & Display', 'Campagnestructuur & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
-          { name: 'Store Management', badge: '', featured: false, from: 'v.a.', price: '€1.500', unit: '/ maand', desc: 'CRO + Ads. Je volledige marketplace ontzorgd.', subtext: "Prijs op basis van aantal SKU's. Altijd op maat.", features: ['Volledig marketplace-beheer', 'CRO op al je listings', 'Content & beeldoptimalisatie', 'Ads op Bol.com & Amazon', 'Vaste contactpersoon', 'Geen langlopende contracten'] },
+          { name: 'Bol.com Ads', badge: 'Meest gekozen', featured: true, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Volledig advertentiebeheer op Bol.com.', subtext: 'Prijs op basis van account omvang.', features: ['Sponsored Products campagnebeheer', 'Branded Shelves strategie & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
+          { name: 'Amazon Ads', badge: '', featured: false, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Sponsored campagnes die winstgevend schalen.', subtext: 'Prijs op basis van account omvang.', features: ['Sponsored Products, Brands & Display', 'Campagnestructuur & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
+          { name: 'Store Management', badge: '', featured: false, from: 'v.a.', price: '€1.000', unit: '/ maand', desc: 'CRO + Ads. Je volledige marketplace ontzorgd.', subtext: 'Prijs op basis van account omvang.', features: ['Volledig marketplace-beheer', 'CRO op al je listings', 'Content & beeldoptimalisatie', 'Ads op Bol.com & Amazon', 'Vaste contactpersoon', 'Geen langlopende contracten'] },
         ],
         quotePre: '“Binnen een kwartaal ging onze Bol.com-omzet met ',
         quoteHi: '62%',
         quotePost: ' omhoog. Voor het eerst voelt marketplace-groei als een systeem in plaats van gokwerk.”',
-        quoteName: 'Mark Luitens',
-        quoteRole: 'E-commerce manager, Quo Sale',
+        quoteName: 'Glenden Swets',
+        quoteRole: 'E-commerce manager, KIMO DIRECT',
         faqH2pre: 'Meest gestelde ',
         faqH2hi: 'vragen.',
         faqs: [
@@ -382,8 +456,17 @@ class Component extends DCLogic {
           { q: 'Waarom zou ik voor Digital Shelves kiezen als marketplace-partner?', a: 'Omdat we werken volgens een bewezen CRO-framework in plaats van losse ad-hoc optimalisaties. We combineren contentoptimalisatie met advertentiebeheer, zodat elke euro ad spend landt op een listing die al maximaal converteert. Je krijgt een vast aanspreekpunt, transparante rapportage en een partner die net zo gedreven is om jouw omzet te laten groeien als jijzelf.' },
         ],
         ctaH2: 'Klaar om structureel te groeien op Amazon & Bol.com?',
-        ctaPara: 'Plan een vrijblijvend gesprek. We laten je in 30 minuten zien waar je grootste groeikansen liggen.',
-        ctaBtn: 'Plan een gratis gesprek →',
+        ctaPara: 'Vrijblijvend kennismaken?',
+        contactEyebrow: 'Neem contact op',
+        contactEmailLabel: 'E-mail ons',
+        contactLocationLabel: 'Locatie',
+        formCompany: 'Bedrijfsnaam',
+        formName: 'Naam',
+        formEmail: 'E-mail',
+        formPhone: 'Telefoonnummer',
+        formMessage: 'Waar kunnen we je mee helpen?',
+        formSubmit: 'Verstuur aanvraag',
+        ctaBtn: 'Contact opnemen →',
         footerNav: [
           { label: 'Aanpak', href: '#aanpak' },
           { label: 'Diensten', href: '#prijzen' },
@@ -407,17 +490,26 @@ class Component extends DCLogic {
           { label: 'ROI', href: '#roi' },
           { label: 'FAQ', href: '#faq' },
         ],
-        navCta: 'Schedule a call',
-        heroEyebrow: 'Marketplace Experts',
+        navCta: 'Contact us',
+        heroEyebrow: 'Voor e-commerce brands',
         heroH1pre: 'Scale up on marketplaces with a proven ',
         heroH1hi: 'CRO framework.',
         heroSub: 'We optimize your listings and ads so your conversion rises structurally — not by guessing, but with data.',
         heroSub2: 'Cancel monthly. No setup costs.',
-        heroCta1: 'Book a free call →',
+        heroCta1: 'Contact us →',
         heroCta2: 'See our approach',
         heroProof: ['Cancel monthly', 'No setup costs'],
         dashLabel: 'screenshot: dashboard / reporting',
         trust: 'Trusted by 50+ brands',
+        compEyebrow: 'DIY vs. outsourcing',
+        compH2: "You don't need an ad budget. You need a system.",
+        compPara: "Most agencies run a few campaigns and call it strategy. We build a repeatable system that converts better every month. That's a different craft.",
+        compOldBadge: 'The old way',
+        compOldH3: 'One-off optimizations',
+        compOldItems: ['You pay for hours, not results', 'Listings that never get tested', 'Ads disconnected from your content strategy', "No visibility into what's actually working"],
+        compNewBadge: 'The Digital Shelves way',
+        compNewH3: 'A proven growth system',
+        compNewItems: ['You pay for structural growth', 'Continuously tested and improved listings', 'Ads and CRO aligned with each other', 'Monthly reporting with clear insights'],
         metrics: [
           { value: '5+ Years', label: 'Experience in marketplace growth' },
           { value: '€2M+', label: 'Managed ad spend across Amazon & Bol.com' },
@@ -461,15 +553,15 @@ class Component extends DCLogic {
         prPara: 'No setup costs, cancel monthly. Your exact rate is based on the number of SKUs. Always custom.',
         prCta: 'Schedule a free intro →',
         pricing: [
-          { name: 'Bol.com Ads', badge: 'Most chosen', featured: true, from: 'from', price: '€400', unit: '/ month', desc: 'Full advertising management on Bol.com.', subtext: 'Priced by number of SKUs. Always custom.', features: ['Sponsored Products campaign management', 'Branded Shelves strategy & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
-          { name: 'Amazon Ads', badge: '', featured: false, from: 'from', price: '€400', unit: '/ month', desc: 'Sponsored campaigns that scale profitably.', subtext: 'Priced by number of SKUs. Always custom.', features: ['Sponsored Products, Brands & Display', 'Campaign structure & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
-          { name: 'Store Management', badge: '', featured: false, from: 'from', price: '€1,500', unit: '/ month', desc: 'CRO + Ads. Your full marketplace, handled.', subtext: 'Priced by number of SKUs. Always custom.', features: ['Full marketplace management', 'CRO on all your listings', 'Content & image optimization', 'Ads on Bol.com & Amazon', 'Dedicated contact', 'No long-term contracts'] },
+          { name: 'Bol.com Ads', badge: 'Most chosen', featured: true, from: 'from', price: '€400', unit: '/ month', desc: 'Full advertising management on Bol.com.', subtext: 'Priced based on account size.', features: ['Sponsored Products campaign management', 'Branded Shelves strategy & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
+          { name: 'Amazon Ads', badge: '', featured: false, from: 'from', price: '€400', unit: '/ month', desc: 'Sponsored campaigns that scale profitably.', subtext: 'Priced based on account size.', features: ['Sponsored Products, Brands & Display', 'Campaign structure & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
+          { name: 'Store Management', badge: '', featured: false, from: 'from', price: '€1,000', unit: '/ month', desc: 'CRO + Ads. Your full marketplace, handled.', subtext: 'Priced based on account size.', features: ['Full marketplace management', 'CRO on all your listings', 'Content & image optimization', 'Ads on Bol.com & Amazon', 'Dedicated contact', 'No long-term contracts'] },
         ],
         quotePre: '“Within a quarter our Bol.com revenue rose ',
         quoteHi: '62%',
         quotePost: '. For the first time marketplace growth feels like a system instead of guesswork.”',
-        quoteName: 'Mark Luitens',
-        quoteRole: 'E-commerce manager, Quo Sale',
+        quoteName: 'Glenden Swets',
+        quoteRole: 'E-commerce manager, KIMO DIRECT',
         faqH2pre: 'Frequently asked ',
         faqH2hi: 'questions.',
         faqs: [
@@ -480,8 +572,17 @@ class Component extends DCLogic {
           { q: 'Why choose Digital Shelves as your marketplace partner?', a: "Because we work from a proven CRO framework instead of ad-hoc tweaks. We combine content optimization with ads management, so every euro of ad spend lands on a listing that already converts at its best. You get a dedicated contact, transparent reporting, and a partner as driven to grow your revenue as you are." },
         ],
         ctaH2: 'Ready to grow structurally on Amazon & Bol.com?',
-        ctaPara: "Book a no-obligation call. In 30 minutes we'll show you where your biggest growth opportunities are.",
-        ctaBtn: 'Book a free call →',
+        ctaPara: 'Schedule a free intro?',
+        contactEyebrow: 'Get in touch',
+        contactEmailLabel: 'Email us',
+        contactLocationLabel: 'Location',
+        formCompany: 'Company name',
+        formName: 'Name',
+        formEmail: 'Email',
+        formPhone: 'Phone number',
+        formMessage: 'How can we help?',
+        formSubmit: 'Send request',
+        ctaBtn: 'Contact us →',
         footerNav: [
           { label: 'Approach', href: '#aanpak' },
           { label: 'Services', href: '#prijzen' },
@@ -567,7 +668,17 @@ class Component extends DCLogic {
       accentColor,
       t,
       langBtns,
-      clientLogos: ['KIMO DIRECT', 'Climatz', 'Dyluxe', 'Quo Sale'],
+      clientLogos: ['KIMO DIRECT', 'Climatz', 'LACARDIA', 'Dyluxe', 'Quo Sale'],
+      clientLogosLoop: (() => {
+        const set = [
+          { img: 'assets/kimodirect-logo.png', name: 'KIMO DIRECT' },
+          { img: 'assets/climatz-logo.png', name: 'Climatz' },
+          { img: 'assets/lacardia-logo.png', name: 'LACARDIA' },
+          { text: true, name: 'Dyluxe' },
+          { text: true, name: 'Quo Sale' },
+        ];
+        return [...set, ...set, ...set, ...set];
+      })(),
       faqItems,
       orderValue,
       monthlyOrders,
