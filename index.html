@@ -30,11 +30,10 @@
       </ol>
     </section>
     <section id="prijzen">
-      <h2>Kies wat je nodig hebt.</h2>
+      <h2>Waar wij het verschil maken.</h2>
       <ul>
-        <li><strong>Bol.com Ads</strong> — v.a. €400 / maand. Volledig advertentiebeheer op Bol.com. Prijs op basis van account omvang.</li>
-        <li><strong>Amazon Ads</strong> — v.a. €400 / maand. Sponsored campagnes die winstgevend schalen. Prijs op basis van account omvang.</li>
-        <li><strong>Store Management</strong> — v.a. €1.000 / maand. CRO + Ads, je volledige marketplace ontzorgd. Prijs op basis van account omvang.</li>
+        <li><strong>Ads (Bol.com &amp; Amazon)</strong> — Volledig advertentiebeheer met geautomatiseerde bied- en budgetsturing op beide marketplaces.</li>
+        <li><strong>Store Management</strong> — Alles uit Ads, plus conversie-optimalisatie (CRO) op je listings: content, beeld en keywords.</li>
       </ul>
     </section>
     <section id="faq">
@@ -90,7 +89,7 @@ fbq('track', 'PageView');
     .ds-hero-section { padding: 56px 20px 48px !important; }
     .ds-grid-3, .ds-grid-4, .ds-grid-2 { grid-template-columns: 1fr !important; }
     .ds-comp-right { border-right: none !important; border-bottom: 1px solid #E1E7F0; }
-    .ds-contact-card { grid-template-columns: 1fr !important; }
+    .ds-contact-card { grid-template-columns: 1fr !important; gap: 48px !important; }
     .ds-form-row { grid-template-columns: 1fr !important; }
     .ds-section-pad { padding: 56px 20px !important; }
     .ds-nav-cta { min-width: 0 !important; padding: 10px 14px !important; font-size: 13px !important; }
@@ -243,27 +242,16 @@ fbq('track', 'PageView');
         <h2 class="ds-pr-h2" style="font-size: 44px; line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 16px 0 16px;">{{ t.prH2 }}</h2>
         <p style="font-size: 18px; line-height: 1.55; color: #48526A; margin: 0;">{{ t.prPara }}</p>
       </div>
-      <div class="ds-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;">
-        <sc-for list="{{ t.pricing }}" as="p" hint-placeholder-count="3">
+      <div class="ds-grid-2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; max-width: 900px; margin: 0 auto;">
+        <sc-for list="{{ t.pricing }}" as="p" hint-placeholder-count="2">
           <div style="{{ p.cardStyle }}">
-            <div style="height: 34px; display: flex; align-items: center; margin-bottom: 16px;">
-              <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
-                <span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: {{ accentColor }}; padding: 6px 12px; border-radius: 100px;">{{ p.badge }}</span>
-              </sc-if>
-            </div>
-            <h3 style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px;">{{ p.name }}</h3>
-            <p style="font-size: 14px; line-height: 1.5; color: #48526A; margin: 0 0 22px; min-height: 42px;">{{ p.desc }}</p>
-            <div style="display: flex; align-items: baseline; gap: 8px;">
-              <span style="font-size: 16px; font-weight: 700; color: #48526A;">{{ p.from }}</span>
-              <span style="font-size: 42px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">{{ p.price }}</span>
-              <span style="font-size: 15px; color: #8A93A6;">{{ p.unit }}</span>
-            </div>
-            <p style="font-size: 13px; font-style: italic; color: #8A93A6; margin: 14px 0 0; padding: 0 0 22px; border-bottom: 1px solid #EEF1F6;">{{ p.subtext }}</p>
-            <div style="display: flex; flex-direction: column; gap: 14px; margin: 22px 0 28px;">
-              <sc-for list="{{ p.features }}" as="feat" hint-placeholder-count="5">
-                <div style="display: flex; align-items: center; gap: 12px;">
+            <h3 style="font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px;">{{ p.name }}</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #48526A; margin: 0 0 26px; padding-bottom: 26px; border-bottom: 1px solid #EEF1F6;">{{ p.desc }}</p>
+            <div style="display: flex; flex-direction: column; gap: 14px; margin: 0 0 30px;">
+              <sc-for list="{{ p.features }}" as="feat" hint-placeholder-count="4">
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
                   <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #E6F7EF; display: flex; align-items: center; justify-content: center; color: {{ accentColor }}; font-size: 12px;">✓</span>
-                  <span style="font-size: 15px; color: #1F2937; line-height: 1.35;">{{ feat }}</span>
+                  <span style="font-size: 15px; color: #1F2937; line-height: 1.4;">{{ feat }}</span>
                 </div>
               </sc-for>
             </div>
@@ -354,46 +342,58 @@ fbq('track', 'PageView');
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="ds-section-pad" style="background: #F7F9FC; padding: 96px 32px;">
-    <div class="ds-contact-card" style="max-width: 1120px; margin: 0 auto; border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.15fr; background: #fff; box-shadow: 0 40px 90px -40px rgba(0,0,0,0.5);">
+  <section id="contact" class="ds-section-pad" style="background: #0B0D10; color: #fff; padding: 104px 32px; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: radial-gradient(#1A2026 1px, transparent 1px); background-size: 26px 26px; opacity: 0.6; pointer-events: none;"></div>
+    <div class="ds-contact-card" style="position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 72px; align-items: center;">
 
-      <div style="background: #0E3B30; padding: 64px 52px; display: flex; flex-direction: column;">
-        <span style="font-size: 15px; color: #7FD9AE; font-weight: 500;">{{ t.contactEyebrow }}</span>
-        <h2 class="ds-cta-h2" style="font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; color: #fff; margin: 18px 0 48px;">{{ t.ctaH2 }}</h2>
-        <div style="display: flex; flex-direction: column; gap: 30px; margin-top: auto;">
-          <div style="display: flex; align-items: center; gap: 18px;">
-            <span style="flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: {{ accentColor }}; display: flex; align-items: center; justify-content: center; font-size: 26px; line-height: 1;">✉</span>
-            <div>
-              <div style="font-size: 15px; color: #C7E8D9;">{{ t.contactEmailLabel }}</div>
-              <a href="mailto:info@digitalshelves.nl" style="text-decoration: none; color: #6FE3A3; font-size: 18px; font-weight: 500;">info@digitalshelves.nl</a>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 18px;">
-            <span style="flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: {{ accentColor }}; display: flex; align-items: center; justify-content: center; font-size: 26px; line-height: 1;">📍</span>
-            <div>
-              <div style="font-size: 15px; color: #C7E8D9;">{{ t.contactLocationLabel }}</div>
-              <div style="color: #6FE3A3; font-size: 18px; font-weight: 500; line-height: 1.3;">Damsterdiep 10,<br>9711 SK Groningen</div>
-            </div>
-          </div>
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 10px; background: #161A20; border: 1px solid #23272C; border-radius: 100px; padding: 10px 18px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ accentColor }}; flex-shrink: 0;"></span>
+          <span style="font-size: 14px; font-weight: 600; color: #fff;">{{ t.contactBadge }}</span>
+        </div>
+        <h2 class="ds-cta-h2" style="font-size: 54px; line-height: 1.04; letter-spacing: -0.035em; font-weight: 700; color: #fff; margin: 26px 0 22px; max-width: 16ch;">{{ t.ctaH2 }}</h2>
+        <p style="font-size: 18px; line-height: 1.6; color: #97A1B7; margin: 0 0 40px; max-width: 40ch;">{{ t.ctaPara }}</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <img src="assets/shield-check.png" alt="" style="width: 22px; height: 22px; flex-shrink: 0; display: block; object-fit: contain;">
+          <span style="font-size: 15px; color: #8A93A6;">{{ t.contactPrivacy }}</span>
         </div>
       </div>
 
-      <div style="padding: 64px 52px; display: flex; flex-direction: column;">
-        <h3 style="font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #0B0D10; margin: 0 0 32px;">{{ t.ctaPara }}</h3>
-        <form onSubmit="{{ onSubmitForm }}" style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="background: #fff; border-radius: 26px; padding: 44px 42px;">
+        <form onSubmit="{{ onSubmitForm }}" style="display: flex; flex-direction: column; gap: 22px;">
           <input type="hidden" name="access_key" value="267515d0-8de2-43c9-8d3b-0fcb87f75c79">
-          <div class="ds-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <input required type="text" name="company" placeholder="{{ t.formCompany }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
-            <input required type="text" name="name" placeholder="{{ t.formName }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
+          <div class="ds-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+            <label>
+              <span style="display: block; font-size: 15px; font-weight: 600; color: #0B0D10; margin-bottom: 8px;">{{ t.formName }} <span style="color: {{ accentColor }};">*</span></span>
+              <input required type="text" name="name" placeholder="{{ t.phName }}" style="width: 100%; background: #F1F3F6; border: 1px solid #E6EAF0; border-radius: 12px; padding: 16px 18px; font-size: 16px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; outline: none; transition: border-color .18s ease, background .18s ease;" style-focus="border-color: #00b55e; background: #fff;">
+            </label>
+            <label>
+              <span style="display: block; font-size: 15px; font-weight: 600; color: #0B0D10; margin-bottom: 8px;">{{ t.formCompany }} <span style="color: {{ accentColor }};">*</span></span>
+              <input required type="text" name="company" placeholder="{{ t.phCompany }}" style="width: 100%; background: #F1F3F6; border: 1px solid #E6EAF0; border-radius: 12px; padding: 16px 18px; font-size: 16px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; outline: none; transition: border-color .18s ease, background .18s ease;" style-focus="border-color: #00b55e; background: #fff;">
+            </label>
           </div>
-          <div class="ds-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <input required type="email" name="email" placeholder="{{ t.formEmail }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
-            <input required type="tel" name="phone" placeholder="{{ t.formPhone }}" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10;">
+          <div class="ds-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+            <label>
+              <span style="display: block; font-size: 15px; font-weight: 600; color: #0B0D10; margin-bottom: 8px;">{{ t.formEmail }} <span style="color: {{ accentColor }};">*</span></span>
+              <input required type="email" name="email" placeholder="jij@bedrijf.nl" style="width: 100%; background: #F1F3F6; border: 1px solid #E6EAF0; border-radius: 12px; padding: 16px 18px; font-size: 16px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; outline: none; transition: border-color .18s ease, background .18s ease;" style-focus="border-color: #00b55e; background: #fff;">
+            </label>
+            <label>
+              <span style="display: block; font-size: 15px; font-weight: 600; color: #0B0D10; margin-bottom: 8px;">{{ t.formPhone }} <span style="color: {{ accentColor }};">*</span></span>
+              <input required type="tel" name="phone" placeholder="06-12345678" style="width: 100%; background: #F1F3F6; border: 1px solid #E6EAF0; border-radius: 12px; padding: 16px 18px; font-size: 16px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; outline: none; transition: border-color .18s ease, background .18s ease;" style-focus="border-color: #00b55e; background: #fff;">
+            </label>
           </div>
-          <textarea required name="message" placeholder="{{ t.formMessage }}" rows="4" style="background: #F4F6F9; border: 1px solid #E6EAF0; border-radius: 10px; padding: 15px 16px; font-size: 15px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; resize: vertical;"></textarea>
-          <button type="submit" disabled="{{ formSubmitting }}" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 17px; font-weight: 600; padding: 17px 32px; border-radius: 100px; border: none; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ formButtonLabel }}</button>
+          <label>
+            <span style="display: block; font-size: 15px; font-weight: 600; color: #0B0D10; margin-bottom: 8px;">{{ t.formChallenge }}</span>
+            <select required name="challenge" style="width: 100%; background: #F1F3F6; border: 1px solid #E6EAF0; border-radius: 12px; padding: 16px 18px; font-size: 16px; font-family: 'Schibsted Grotesk', sans-serif; color: #0B0D10; outline: none; transition: border-color .18s ease, background .18s ease; appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%228%22 viewBox=%220 0 14 8%22 fill=%22none%22><path d=%22M1 1l6 6 6-6%22 stroke=%22%238A93A6%22 stroke-width=%221.6%22 stroke-linecap=%22round%22/></svg>'); background-repeat: no-repeat; background-position: right 18px center; padding-right: 46px; cursor: pointer;" style-focus="border-color: #00b55e; background-color: #fff;">
+              <sc-for list="{{ t.challengeOptions }}" as="o" hint-placeholder-count="5">
+                <option value="{{ o.value }}" disabled="{{ o.disabled }}" selected="{{ o.disabled }}">{{ o.label }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <button type="submit" disabled="{{ formSubmitting }}" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 18px; font-weight: 600; font-family: 'Schibsted Grotesk', sans-serif; padding: 20px 32px; border-radius: 100px; border: none; cursor: pointer; margin-top: 6px; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ formButtonLabel }}</button>
+          <p style="font-size: 14px; color: #8A93A6; margin: 0; text-align: center;">{{ t.contactNoShare }}</p>
           <sc-if value="{{ formStatus }}" hint-placeholder-val="{{ false }}">
-            <p style="font-size: 14px; color: {{ accentColor }}; margin: 0; text-align: center;">{{ formStatus }}</p>
+            <p style="font-size: 14px; font-weight: 600; color: {{ accentColor }}; margin: 0; text-align: center;">{{ formStatus }}</p>
           </sc-if>
         </form>
       </div>
@@ -545,14 +545,13 @@ class Component extends DCLogic {
           { name: 'Amazon Ads', desc: 'Sponsored Products, Brands & Display die schalen.', price: 'Op maat', unit: '', note: "o.b.v. aantal EAN's", featured: false, features: ['Sponsored campagnes', 'Bod- & budgetbeheer', 'ACOS-sturing', 'Maandelijkse rapportage'] },
           { name: 'Marketplace Management', desc: 'CRO + Ads gecombineerd. De volledige groeimotor.', price: 'Op maat', unit: '', note: "o.b.v. aantal EAN's", featured: true, features: ['Alles uit Ads', 'Volledige CRO op listings', 'Content & beeldoptimalisatie', 'Vaste contactpersoon'] },
         ],
-        prEyebrow: 'Onze pakketten',
-        prH2: 'Kies wat je nodig hebt.',
-        prPara: 'Geen opstartkosten, maandelijks opzegbaar. Je exacte tarief bepalen we op basis van account omvang, altijd op maat.',
+        prEyebrow: 'Onze diensten',
+        prH2: 'Waar wij het verschil maken.',
+        prPara: 'Twee manieren om met ons samen te werken, afhankelijk van waar je groei nu vastloopt. Altijd op maat, geen opstartkosten en maandelijks opzegbaar.',
         prCta: 'Vrijblijvend kennismaken →',
         pricing: [
-          { name: 'Bol.com Ads', badge: 'Meest gekozen', featured: true, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Volledig advertentiebeheer op Bol.com.', subtext: 'Prijs op basis van account omvang.', features: ['Sponsored Products campagnebeheer', 'Branded Shelves strategie & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
-          { name: 'Amazon Ads', badge: '', featured: false, from: 'v.a.', price: '€400', unit: '/ maand', desc: 'Sponsored campagnes die winstgevend schalen.', subtext: 'Prijs op basis van account omvang.', features: ['Sponsored Products, Brands & Display', 'Campagnestructuur & opzet', 'Listing SEO optimalisatie', 'Dagelijkse bied- & budgetoptimalisatie', 'Maandelijkse performance meeting', 'Geen langlopende contracten'] },
-          { name: 'Store Management', badge: '', featured: false, from: 'v.a.', price: '€1.000', unit: '/ maand', desc: 'CRO + Ads. Je volledige marketplace ontzorgd.', subtext: 'Prijs op basis van account omvang.', features: ['Volledig marketplace-beheer', 'CRO op al je listings', 'Content & beeldoptimalisatie', 'Ads op Bol.com & Amazon', 'Vaste contactpersoon', 'Geen langlopende contracten'] },
+          { num: '01', kicker: 'Bol.com & Amazon', name: 'Ads', desc: 'We nemen je advertentiebeheer op Bol.com en Amazon volledig over en automatiseren de sturing erachter. Biedingen, budgetten en zoektermen worden dagelijks bijgestuurd op basis van data, niet op gevoel.', features: ['Geautomatiseerde bied- & budgetsturing', 'Campagnestructuur voor Bol.com én Amazon', 'Sponsored Products, Brands & Display', 'Keyword- en zoektermanalyse', 'Maandelijkse performance meeting'] },
+          { num: '02', kicker: 'Volledig ontzorgd', name: 'Store Management', desc: 'Alles uit Ads, plus conversie-optimalisatie op je listings. We automatiseren je advertenties én verbeteren structureel je content, beeld en keywords, zodat meer bezoekers ook echt kopen.', features: ['Alles uit Ads, volledig geautomatiseerd', 'CRO op al je listings', 'Content- & beeldoptimalisatie', 'Doorlopende A/B-tests op listings', 'Vaste contactpersoon en wekelijkse sturing'] },
         ],
         quotePre: '“Binnen een kwartaal ging onze Bol.com-omzet met ',
         quoteHi: '62%',
@@ -568,8 +567,22 @@ class Component extends DCLogic {
           { q: 'Wat zijn de kosten om met jullie samen te werken?', a: 'Onze tarieven zijn altijd op maat en gebaseerd op account omvang en de gekozen scope (Ads, CRO of beide). Ads-beheer start vanaf €400 per maand. Store Management start vanaf €1000 per maand. Geen opstartkosten, maandelijks opzegbaar.' },
           { q: 'Waarom zou ik voor Digital Shelves kiezen als marketplace-partner?', a: 'Omdat we werken volgens een bewezen CRO-framework in plaats van losse ad-hoc optimalisaties. We combineren contentoptimalisatie met advertentiebeheer, zodat elke euro ad spend landt op een listing die al maximaal converteert. Je krijgt een vast aanspreekpunt, transparante rapportage en een partner die net zo gedreven is om jouw omzet te laten groeien als jijzelf.' },
         ],
-        ctaH2: 'Klaar om structureel te groeien op Amazon & Bol.com?',
-        ctaPara: 'Vrijblijvend kennismaken?',
+        ctaH2: 'Klaar om structureel te groeien op Marketplaces?',
+        contactBadge: 'Volledig gratis & vrijblijvend',
+        contactPrivacy: 'Je gegevens blijven vertrouwelijk en worden nooit gedeeld.',
+        contactNoShare: 'Wij delen je gegevens nooit met derden.',
+        formChallenge: 'Waar loop je op dit moment tegenaan?',
+        phName: 'Voor- en achternaam',
+        phCompany: 'Naam van je onderneming',
+        challengeOptions: [
+          { value: '', label: 'Kies je grootste uitdaging', disabled: true },
+          { value: 'Te weinig omzet via marketplaces', label: 'Te weinig omzet via marketplaces', disabled: false },
+          { value: 'Advertentiekosten te hoog (ACOS)', label: 'Advertentiekosten te hoog (ACOS)', disabled: false },
+          { value: 'Lage conversie op mijn listings', label: 'Lage conversie op mijn listings', disabled: false },
+          { value: 'Geen tijd of kennis in huis', label: 'Geen tijd of kennis in huis', disabled: false },
+          { value: 'Anders', label: 'Anders', disabled: false },
+        ],
+        ctaPara: 'Vertel kort waar je nu staat. Binnen één werkdag nemen wij contact met je op.',
         contactEyebrow: 'Neem contact op',
         contactEmailLabel: 'E-mail ons',
         contactLocationLabel: 'Locatie',
@@ -578,7 +591,7 @@ class Component extends DCLogic {
         formEmail: 'E-mail',
         formPhone: 'Telefoonnummer',
         formMessage: 'Waar kunnen we je mee helpen?',
-        formSubmit: 'Verstuur aanvraag',
+        formSubmit: 'Meer informatie',
         ctaBtn: 'Contact opnemen →',
         footerNav: [
           { label: 'Aanpak', href: '#aanpak' },
@@ -661,14 +674,13 @@ class Component extends DCLogic {
           { name: 'Amazon Ads', desc: 'Sponsored Products, Brands & Display that scale.', price: 'Custom', unit: '', note: 'based on number of EANs', featured: false, features: ['Sponsored campaigns', 'Bid & budget management', 'ACOS steering', 'Monthly reporting'] },
           { name: 'Marketplace Management', desc: 'CRO + Ads combined. The full growth engine.', price: 'Custom', unit: '', note: 'based on number of EANs', featured: true, features: ['Everything in Ads', 'Full listing CRO', 'Content & image optimization', 'Dedicated contact'] },
         ],
-        prEyebrow: 'Our packages',
-        prH2: 'Choose what you need.',
-        prPara: 'No setup costs, cancel monthly. Your exact rate is based on the number of SKUs. Always custom.',
+        prEyebrow: 'Our services',
+        prH2: 'Where we make the difference.',
+        prPara: 'Two ways to work with us, depending on where your growth is stuck today. Always tailored, no setup costs, cancel monthly.',
         prCta: 'Schedule a free intro →',
         pricing: [
-          { name: 'Bol.com Ads', badge: 'Most chosen', featured: true, from: 'from', price: '€400', unit: '/ month', desc: 'Full advertising management on Bol.com.', subtext: 'Priced based on account size.', features: ['Sponsored Products campaign management', 'Branded Shelves strategy & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
-          { name: 'Amazon Ads', badge: '', featured: false, from: 'from', price: '€400', unit: '/ month', desc: 'Sponsored campaigns that scale profitably.', subtext: 'Priced based on account size.', features: ['Sponsored Products, Brands & Display', 'Campaign structure & setup', 'Listing SEO optimization', 'Daily bid & budget optimization', 'Monthly performance meeting', 'No long-term contracts'] },
-          { name: 'Store Management', badge: '', featured: false, from: 'from', price: '€1,000', unit: '/ month', desc: 'CRO + Ads. Your full marketplace, handled.', subtext: 'Priced based on account size.', features: ['Full marketplace management', 'CRO on all your listings', 'Content & image optimization', 'Ads on Bol.com & Amazon', 'Dedicated contact', 'No long-term contracts'] },
+          { num: '01', kicker: 'Bol.com & Amazon', name: 'Ads', desc: 'We take over your advertising on Bol.com and Amazon and automate the steering behind it. Bids, budgets and search terms are adjusted daily based on data, not gut feeling.', features: ['Automated bid & budget steering', 'Campaign structure for both Bol.com and Amazon', 'Sponsored Products, Brands & Display', 'Keyword and search term analysis', 'Monthly performance meeting'] },
+          { num: '02', kicker: 'Fully managed', name: 'Store Management', desc: 'Everything in Ads, plus conversion optimisation on your listings. We automate your advertising and structurally improve your content, imagery and keywords so more visitors actually buy.', features: ['Everything in Ads, fully automated', 'CRO across all your listings', 'Content & imagery optimisation', 'Ongoing A/B tests on listings', 'Dedicated contact and weekly steering'] },
         ],
         quotePre: '“Within a quarter our Bol.com revenue rose ',
         quoteHi: '62%',
@@ -685,7 +697,21 @@ class Component extends DCLogic {
           { q: 'Why choose Digital Shelves as your marketplace partner?', a: "Because we work from a proven CRO framework instead of ad-hoc tweaks. We combine content optimization with ads management, so every euro of ad spend lands on a listing that already converts at its best. You get a dedicated contact, transparent reporting, and a partner as driven to grow your revenue as you are." },
         ],
         ctaH2: 'Ready to grow structurally on Amazon & Bol.com?',
-        ctaPara: 'Schedule a free intro?',
+        contactBadge: 'Completely free, no obligations',
+        contactPrivacy: 'Your details stay confidential and are never shared.',
+        contactNoShare: 'We never share your details with third parties.',
+        formChallenge: 'What are you running into right now?',
+        phName: 'First and last name',
+        phCompany: 'Your company name',
+        challengeOptions: [
+          { value: '', label: 'Pick your biggest challenge', disabled: true },
+          { value: 'Not enough marketplace revenue', label: 'Not enough marketplace revenue', disabled: false },
+          { value: 'Ad costs too high (ACOS)', label: 'Ad costs too high (ACOS)', disabled: false },
+          { value: 'Low conversion on my listings', label: 'Low conversion on my listings', disabled: false },
+          { value: 'No time or in-house expertise', label: 'No time or in-house expertise', disabled: false },
+          { value: 'Something else', label: 'Something else', disabled: false },
+        ],
+        ctaPara: 'Tell us briefly where you stand today. You will hear back from us within one working day, no sales pitch.',
         contactEyebrow: 'Get in touch',
         contactEmailLabel: 'Email us',
         contactLocationLabel: 'Location',
@@ -718,7 +744,7 @@ class Component extends DCLogic {
 
     t.pricing = t.pricing.map((p) => ({
       ...p,
-      cardStyle: `background:#fff; border-radius:20px; padding:32px 30px; display:flex; flex-direction:column; height:100%; ${p.featured ? `border:1.5px solid ${accentColor}; box-shadow:0 20px 50px -24px rgba(0,181,94,0.45);` : 'border:1px solid #E1E7F0;'}`,
+      cardStyle: 'background:#fff; border-radius:20px; padding:34px 30px; display:flex; flex-direction:column; height:100%; border:1px solid #E1E7F0;',
     }));
 
     const uplifts = [0.10, 0.15, 0.25];
