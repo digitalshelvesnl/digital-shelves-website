@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Digital Shelves — Groei op Amazon & Bol.com met een bewezen CRO-framework</title>
+<title>Digital Shelves — Groei op Bol &amp; Amazon</title>
 <meta name="description" content="Digital Shelves optimaliseert je listings en advertenties op Amazon en Bol.com, zodat je conversie structureel stijgt. Geen opstartkosten, maandelijks opzegbaar.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.digitalshelves.nl/">
@@ -19,7 +19,7 @@
   <header><nav><a href="#aanpak">Aanpak</a> <a href="#prijzen">Diensten</a> <a href="#roi">ROI</a> <a href="#faq">FAQ</a></nav></header>
   <main>
     <h1>Schaal via marketplaces met een bewezen CRO-framework.</h1>
-    <p>Wij optimaliseren je listings en ads zodat je conversie structureel stijgt. Niet op gevoel, maar met data. Maandelijks opzegbaar. Geen opstartkosten.</p>
+    <p>Wij zorgen voor structurele groei via marketplaces. Niet op gevoel maar met data. Maandelijks opzegbaar. Geen opstartkosten.</p>
     <section id="aanpak">
       <h2>Conversie is geen toeval. Het is een systeem.</h2>
       <ol>
@@ -43,8 +43,6 @@
         <dd>Binnen de eerste drie maanden zien we bij onze klanten gemiddeld 30% meer conversie op hun listings. Bij sommige merken groeit de omzet via Bol.com of Amazon zelfs 2-3x.</dd>
         <dt>Hoe ziet jullie werkwijze eruit?</dt>
         <dd>We starten altijd met een audit van je huidige listings en advertenties om de grootste kansen in kaart te brengen, en maken op basis daarvan een strategie op maat.</dd>
-        <dt>Hoe snel kunnen we starten?</dt>
-        <dd>Zodra we akkoord hebben op de audit en het voorstel, starten we direct. De onboarding duurt maximaal 7 dagen voor livegang.</dd>
         <dt>Wat zijn de kosten om met jullie samen te werken?</dt>
         <dd>Onze tarieven zijn op maat, gebaseerd op account omvang en scope. Ads-beheer start vanaf €400 per maand, Store Management vanaf €1000 per maand. Geen opstartkosten, maandelijks opzegbaar.</dd>
       </dl>
@@ -58,7 +56,8 @@
 </noscript>
 <x-dc>
 <helmet>
-<link rel="icon" type="image/png" href="assets/favicon-arrow.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="assets/favicon-512.png">
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -139,7 +138,7 @@ fbq('track', 'PageView');
       <span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: #35405C;">{{ t.heroEyebrow }}</span>
     </div>
     <h1 class="ds-hero-h1" style="font-size: 68px; line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; margin: 0 0 24px; max-width: 900px; text-wrap: balance;">{{ t.heroH1pre }}<span style="background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">{{ t.heroH1hi }}</span></h1>
-    <p class="ds-hero-sub" style="font-size: 21px; line-height: 1.5; color: #48526A; max-width: 620px; margin: 0 0 36px; font-weight: 400;">{{ t.heroSub }}</p>
+    <p class="ds-hero-sub" style="font-size: 21px; line-height: 1.5; color: #48526A; max-width: 620px; margin: 0 0 36px; font-weight: 400;">{{ t.heroSub }}<br>{{ t.heroSubLine2 }}</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px;">
       <a href="#contact" style="text-decoration: none; background: linear-gradient(90deg, #005f45 0%, #00b55e 100%); color: #fff; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,181,94,0.28); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;" style-hover="transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(0,181,94,0.42);">{{ t.heroCta1 }}</a>
       <a href="#aanpak" class="ds-hero-cta2" style="text-decoration: none; background: #fff; color: #0B0D10; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 10px; border: 1px solid #DCE1EA;">{{ t.heroCta2 }}</a>
@@ -491,7 +490,8 @@ class Component extends DCLogic {
         heroEyebrow: 'Voor e-commerce brands',
         heroH1pre: 'Schaal via marketplaces met een bewezen ',
         heroH1hi: 'CRO-framework.',
-        heroSub: 'Wij optimaliseren je listings en ads zodat je conversie structureel stijgt. Niet op gevoel, maar met data.',
+        heroSub: 'Wij zorgen voor structurele groei via marketplaces.',
+        heroSubLine2: 'Niet op gevoel maar met data.',
         heroSub2: 'Maandelijks opzegbaar. Geen opstartkosten.',
         heroCta1: 'Contact opnemen →',
         heroCta2: 'Bekijk onze aanpak',
@@ -499,28 +499,28 @@ class Component extends DCLogic {
         dashLabel: 'screenshot: dashboard / rapportage',
         trust: 'Vertrouwd door 50+ merken',
         compEyebrow: 'Zelf doen vs. uitbesteden',
-        compH2: 'Je hebt niet meer ad budget nodig. Je hebt een groeisysteem nodig.',
-        compPara: 'De meeste merken draaien campagnes op gevoel en sturen niet op data. Wij bouwen een herhaalbaar systeem dat elke maand beter converteert.',
+        compH2: 'Je hebt niet meer ad budget nodig. Maar een bewezen groeisysteem.',
+        compPara: 'De meeste merken draaien campagnes op basis van gevoel. Wij bouwen een systeem zodat jouw merk structureel groeit.',
         compOldBadge: 'De oude manier',
         compOldH3: 'Losse optimalisaties',
-        compOldItems: ['Betalen voor uren, niet voor resultaat', 'Listings die nooit worden getest', 'Ads los van je contentstrategie', 'Geen zicht op wat echt werkt'],
+        compOldItems: ['Aanpassen op basis van gevoel', 'Meer budget uitgeven zonder strategie', 'Ads los zien van conversieratio en CTR', 'Geen zicht op wat echt werkt'],
         compNewBadge: 'De Digital Shelves manier',
         compNewH3: 'Een bewezen groeisysteem',
-        compNewItems: ['Je betaalt voor structurele groei', 'Continu geteste en verbeterde listings', 'Ads en CRO op elkaar afgestemd', 'Maandelijkse rapportage met heldere inzichten'],
+        compNewItems: ['Structurele groei op basis van data', 'Effectief opschalen wat werkt', 'Ads en CRO op elkaar afgestemd', 'Wekelijkse rapportage met heldere inzichten'],
         metrics: [
-          { value: '5+ jaar', label: 'Ervaring met groei op diverse marketplaces' },
+          { value: '7+ jaar', label: 'Ervaring met groei op diverse marketplaces' },
           { value: '€2M+', label: 'Beheerde ad spend op marketplaces' },
-          { value: '+30%', label: 'Gemiddelde stijging in conversieratio na optimalisatie' },
+          { value: '+30%', label: 'Gemiddelde groei in omzet na optimalisatie' },
         ],
-        fwEyebrow: 'Het CRO-framework',
-        fwH2pre: 'Conversie is geen toeval. Het is een ',
+        fwEyebrow: 'De groeimotor',
+        fwH2pre: 'Structurele groei is geen toeval. Het is een ',
         fwH2hi: 'systeem.',
         fwSub: 'Elke stap is meetbaar en herhaalbaar. We optimaliseren continu op basis van data, van listing tot bod.',
         framework: [
-          { num: '01', title: 'Audit & data', body: 'We analyseren je listings, concurrentie en keywords om de grootste hefbomen te vinden.' },
-          { num: '02', title: 'CRO-optimalisatie', body: 'Content, beeld en keywords geoptimaliseerd om bezoekers naar kopers te converteren.' },
-          { num: '03', title: 'Ads-sturing', body: 'Campagnestructuur, biedingen en ACOS-sturing die winstgevend schaalt.' },
-          { num: '04', title: 'Continu schalen', body: 'Wekelijkse optimalisatie en heldere rapportage. We blijven bijsturen op data.' },
+          { num: '01', title: 'Audit', body: 'We analyseren je markt en huidige advertenties om de grootste hefbomen te vinden.' },
+          { num: '02', title: 'Strategie', body: 'We zetten advertentie campagnes op met een bewezen groeisysteem.' },
+          { num: '03', title: 'Optimalisatie', body: 'Op basis van data en rankings optimaliseren we de campagnes.' },
+          { num: '04', title: 'Opschalen', body: 'Na wekelijkse optimalisaties blijven we testen en schalen we op wat werkt.' },
         ],
         svEyebrow: 'Diensten',
         svH2: 'Kies wat je nodig hebt. Niets meer.',
@@ -550,8 +550,8 @@ class Component extends DCLogic {
         prPara: 'Twee manieren om met ons samen te werken, afhankelijk van waar je op dit moment tegenaan loopt.',
         prCta: 'Vrijblijvend kennismaken →',
         pricing: [
-          { num: '01', kicker: 'Bol.com & Amazon', name: 'Ads', desc: 'We nemen je advertentiebeheer op Bol.com en Amazon volledig over en automatiseren de sturing erachter. Biedingen, budgetten en zoektermen worden dagelijks bijgestuurd op basis van data, niet op gevoel.', features: ['Geautomatiseerde bied- & budgetsturing', 'Campagnestructuur voor Bol.com én Amazon', 'Sponsored Products, Brands & Display', 'Keyword- en zoektermanalyse', 'Maandelijkse performance meeting'] },
-          { num: '02', kicker: 'Volledig ontzorgd', name: 'Store Management', desc: 'Alles uit Ads, plus conversie-optimalisatie op je listings. We automatiseren je advertenties én verbeteren structureel je content, beeld en keywords, zodat meer bezoekers ook echt kopen.', features: ['Alles uit Ads, volledig geautomatiseerd', 'CRO op al je listings', 'Content- & beeldoptimalisatie', 'Doorlopende A/B-tests op listings', 'Vaste contactpersoon en wekelijkse sturing'] },
+          { num: '01', kicker: 'Bol.com & Amazon', name: 'Ads', desc: 'We nemen je advertentiebeheer op Bol.com en/of Amazon volledig over. Biedingen, budgetten en zoektermen worden meer-wekelijks bijgestuurd.', features: ['Efficiënte bied- & budgetsturing', 'Campagnestructuur voor Bol.com en/of Amazon', 'Sponsored Products, Branded Shelves & Displays', 'Ranking- en zoektermanalyse', 'Maandelijkse evaluatie meeting'] },
+          { num: '02', kicker: 'Volledig ontzorgd', name: 'Marketplace Management', desc: 'Volledig marketplace beheer. We runnen zowel de advertenties als het toevoegen en optimaliseren van productlistings.', features: ['Full service marketplace beheer', 'Ads afgestemd op conversieratio', 'Continue listing optimalisatie', 'Voorraad- en assortimentsbeheer', 'Dagelijkse contactmomenten en wekelijkse evaluaties'] },
         ],
         quotePre: '“Binnen een kwartaal ging onze Bol.com-omzet met ',
         quoteHi: '62%',
@@ -561,11 +561,10 @@ class Component extends DCLogic {
         faqH2pre: 'Meest gestelde ',
         faqH2hi: 'vragen.',
         faqs: [
-          { q: 'Welke resultaten mag ik verwachten?', a: 'Binnen de eerste drie maanden zien we bij onze klanten gemiddeld 30% meer conversie op hun listings. Bij sommige merken groeit de omzet via Bol.com of Amazon zelfs 2-3x. De uiteindelijke resultaten hangen af van je startpunt en de samenwerking tussen ons en jou als klant. Daarom stappen we alleen in een traject als we overtuigd zijn dat de investering zich terugverdient.' },
-          { q: 'Hoe ziet jullie werkwijze eruit?', a: 'Afhankelijk van welke dienst je bij ons afneemt starten we altijd met een audit van je huidige listings en advertenties. Zo brengen we in kaart waar de grootste kansen liggen en wat haalbaar is. Op basis daarvan maken we een strategie op maat om gestelde doelen te behalen.' },
-          { q: 'Hoe snel kunnen we starten?', a: 'Zodra we het akkoord hebben op de audit en het voorstel, starten we direct. De onboarding duurt maximaal 7 dagen voor livegang.' },
-          { q: 'Wat zijn de kosten om met jullie samen te werken?', a: 'Onze tarieven zijn gebaseerd op account omvang en de gekozen scope (Ads, CRO of beide). Neem contact op om de mogelijkheden te bespreken.' },
-          { q: 'Waarom zou ik voor Digital Shelves kiezen als marketplace-partner?', a: 'Omdat we werken volgens een bewezen CRO-framework in plaats van optimalisaties op gevoel. We combineren conversie-optimalisatie met advertentiebeheer, zodat elke euro ad spend landt op een listing die goed converteert. Je krijgt een vast aanspreekpunt, transparante rapportages en een partner die net zo gedreven is om jouw omzet te laten groeien als jijzelf.' },
+          { q: 'Welke resultaten mag ik verwachten?', a: 'Binnen de eerste drie maanden zien we bij onze klanten gemiddeld 30% meer omzet uit advertenties. Bij sommige merken groeit de totale omzet via marketplaces zelfs 2-3x. De uiteindelijke resultaten hangen af van je startpunt en de samenwerking tussen ons en jou als klant. Daarom stappen we alleen in een traject als we overtuigd zijn dat de investering zich terugverdient.' },
+          { q: 'Hoe ziet jullie werkwijze eruit?', a: 'Afhankelijk van welke dienst je bij ons afneemt starten we altijd met een audit van je huidige ads of listings. Op basis daarvan doen we een passend aanbod.' },
+          { q: 'Wat zijn de kosten om met jullie samen te werken?', a: 'Onze tarieven zijn gebaseerd op account omvang en de gekozen scope (Ads of Marketplace management). Neem contact op om de mogelijkheden te bespreken.' },
+          { q: 'Waarom zou ik voor Digital Shelves kiezen als marketplace-partner?', a: 'Wij werken volgens een bewezen systeem via marketplaces dat zorgt voor structurele groei. Je krijgt daarbij een vast aanspreekpunt, wekelijkse rapportages en een partner die net zo gedreven is om jouw omzet te laten groeien als jijzelf.' },
         ],
         ctaH2: 'Klaar om structureel te groeien op Marketplaces?',
         contactBadge: 'Volledig gratis & vrijblijvend',
@@ -582,7 +581,7 @@ class Component extends DCLogic {
           { value: 'Geen tijd of kennis in huis', label: 'Geen tijd of kennis in huis', disabled: false },
           { value: 'Anders', label: 'Anders', disabled: false },
         ],
-        ctaPara: 'Vertel kort waar je nu staat. Binnen één werkdag nemen wij contact met je op.',
+        ctaPara: 'Vertel kort waar je nu staat. Binnen 24 uur nemen wij contact met je op.',
         contactEyebrow: 'Neem contact op',
         contactEmailLabel: 'E-mail ons',
         contactLocationLabel: 'Locatie',
@@ -639,7 +638,7 @@ class Component extends DCLogic {
         metrics: [
           { value: '5+ Years', label: 'Experience in marketplace growth' },
           { value: '€2M+', label: 'Managed ad spend across marketplaces' },
-          { value: '+30%', label: 'Average uplift in conversion rate after optimization' },
+          { value: '+30%', label: 'Average revenue growth after optimisation' },
         ],
         fwEyebrow: 'The CRO framework',
         fwH2pre: "Conversion isn't luck. It's a ",
